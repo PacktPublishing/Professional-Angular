@@ -1,0 +1,73 @@
+/* app css stylesheet */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500');
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+h3{
+    font-weight: 400;
+}
+
+/* Text weight utility classes */
+.text-light{
+    font-weight: 300;
+}
+.text-normal{
+    font-weight: 400;
+}
+.text-medium{
+    font-weight: 500;
+}
+
+/* Margin and padding utility classes */
+.m-n{
+    margin: 0;
+}
+.m-sm{
+    margin: 10px;
+}
+.m-md{
+    margin: 20px;
+}
+.m-r-md{
+    margin-right: 20px;
+}
+.m-l-md{
+    margin-left: 20px;
+}
+.m-t-xs{
+    margin-top: 5px;
+}
+.m-t-sm{
+    margin-top: 10px;
+}
+.m-t-md{
+    margin-top: 20px;
+}
+.m-t-lg{
+    margin-top: 40px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Borders for the right and left side panes */
+.side-pane-right{
+    border-right: 1px solid lightgray;
+}
+.side-pane-left{
+    border-left: 1px solid lightgray;
+}
+
+/* Styles for the products in the right side pane */
+.next-product{
+    margin-bottom: 20px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 20px;
+}
