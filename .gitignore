@@ -18,11 +18,6 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 
 # Build folders
-.sass-cache/
-.tmp/
-*.tmp.*
-
-# Build folders
 node_modules/
 dist/
 
