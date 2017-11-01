@@ -1,0 +1,30 @@
+# Webstorm/Vscode/Sublime
+.idea/
+*.sublime-project
+*.sublime-workspace
+.vscode/
+
+# Logs and trash
+npm-debug.log*
+*~
+*.sw[mnpcod]
+*.log
+*.tmp
+log.txt
+$RECYCLE.BIN/
+tsconfig.tmp.json
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
+
+# Build folders
+.sass-cache/
+.tmp/
+*.tmp.*
+
+# Build folders
+node_modules/
+dist/
+
+# Transpiled files
+**/*.js
