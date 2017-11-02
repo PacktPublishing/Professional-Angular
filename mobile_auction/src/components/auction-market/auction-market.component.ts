@@ -5,5 +5,4 @@ import {Component} from '@angular/core';
   templateUrl: '/src/components/auction-market/auction-market.component.html'
 })
 export class AuctionMarketComponent {
-  one:string;
 }
