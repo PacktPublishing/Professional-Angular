@@ -50,10 +50,17 @@ export class AuctionMarketComponent implements OnInit {
           this.startProductAuction(next);
           this.currentProductIndex++
         }
+        if (localStorage.getItem('productSellingPrice')) {
+          localStorage.removeItem('productSellingPrice')
+        }
         else {
           console.log("Auction Ended!");
         }
         return;
+      }
+      if (localStorage.getItem('productSellingPrice')) {
+        let productSellingPrice = Number(localStorage.getItem('productSellingPrice'));
+        this.currentProductAuction.product.sellingPrice = productSellingPrice;
       }
       ++this.productAuctionRunningDuration;
     }, 1000);
@@ -240,10 +247,11 @@ export class AuctionMarketComponent implements OnInit {
 
   onBid() {
     this.user = this.getUser()
-    if (this.user) {
+    if (this.user && this.productAuctionRunningDuration) {
       if (this.bidAmount > this.currentProductAuction.product.sellingPrice) {
         this.bid = new Bid(+this.bidAmount, this.user)
         this.currentProductAuction.product.sellingPrice = this.bid.amount;
+        localStorage.setItem('productSellingPrice', this.currentProductAuction.product.sellingPrice.toString())
       }
       else{
         this.errorMessages.bidError = 'Your bid is too low'
