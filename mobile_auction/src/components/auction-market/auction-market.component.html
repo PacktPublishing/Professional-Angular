@@ -1,2 +1,41 @@
-<pre>Current Product: {{currentProductAuction | json}}</pre>
-<pre>Time Left: {{currentProductAuction.duration - productAuctionRunningDuration}}</pre>
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="m-r-md m-l-md auction">
+        <h3>Auction</h3>
+        <div class="row m-t-md">
+          <div class="col-sm-7">
+            <img class="img-responsive" [src]="'/static/images/' + currentProductAuction.product.image" >
+          </div>
+          <div class="col-sm-5">
+            <div class="well">
+              <h4>{{currentProductAuction.product.title}}</h4>
+              <p>
+                Price:
+                <span class="text-medium">$ {{currentProductAuction.product.sellingPrice}} </span>
+              </p>
+              <p class="text-medium">
+                {{currentProductAuction.product.description}}
+              </p>
+              <p>
+                Time Left:
+                <span class="text-medium">{{currentProductAuction.duration - productAuctionRunningDuration}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="m-t-lg">
+          <h3 class="text-light">Your bid</h3>
+          <div class="form-group row">
+            <div class="col-xs-4">
+              <input class="form-control" type="number" placeholder="Amount" (input)="bidAmount = $event.target.value">
+            </div>
+            <div class="col-xs-8">
+              <button type="button" class="btn btn-success" (click)="onBid()">Place bid</button>
+            </div>
+          </div>
+          <p class="text-danger text-light">{{errorMessages.userError}}</p>
+          <p class="text-danger text-light">{{errorMessages.bidError}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
