@@ -9,12 +9,12 @@ import { User } from './../auction-market/model';
         <div class="navbar-header">
           <h1>Mobile Auction</h1>
         </div>
-        <form class="navbar-form navbar-right m-t-md">
+        <div class="navbar-form navbar-right m-t-md">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" [value]="user.name" (input)="user.name = $event.target.value">
           </div>
           <button type="button" class="btn btn-default" (click)="createUser()">Submit</button>
-        </form>
+        </div>
       </div>
     </nav>
     <div class="container-fluid">
@@ -22,7 +22,7 @@ import { User } from './../auction-market/model';
     </div>
 `
 })
-export class MobileActionAppComponent {
+export class MobileAuctionAppComponent {
     user: User;
 
     constructor() {
