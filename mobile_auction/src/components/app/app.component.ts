@@ -33,5 +33,4 @@ export class MobileAuctionAppComponent {
       sessionStorage.setItem( 'currentUser', JSON.stringify(this.user))
       this.user.name = '';
     }
-
 }
