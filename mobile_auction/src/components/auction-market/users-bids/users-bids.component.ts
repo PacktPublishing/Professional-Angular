@@ -8,11 +8,9 @@ import { Bid } from './../model';
 export class UsersBidsComponent implements OnChanges {
   @Input() bid: Bid;
   bids: Bid[];
-  stuff: boolean;
 
   constructor() {
     this.bids = [];
-    this.stuff = false;
   }
 
   ngOnChanges(){
