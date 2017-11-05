@@ -2,11 +2,11 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MobileAuctionAppComponent }  from './app.component';
-import {AuctionMarketComponent} from '../auction-market/auction-market.component';
+import { AuctionMarketModule } from './../auction-market/auction-market.module';
 
 @NgModule({
-  imports: [BrowserModule],
-  declarations: [MobileAuctionAppComponent, AuctionMarketComponent],
+  imports: [BrowserModule, AuctionMarketModule],
+  declarations: [MobileAuctionAppComponent],
   bootstrap: [MobileAuctionAppComponent]
 })
 export class AppModule { }

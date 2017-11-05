@@ -1,0 +1,8 @@
+<h3 class="text-center">Current Bids</h3>
+<div class="well text-center" *ngFor="let bid of bids">
+  <p class="text-medium">$ {{ bid?.amount }}</p>
+  <p class="small gray">placed by</p>
+  <p>{{ bid?.user.name }}</p>
+  <p class="small gray">on</p>
+  <p>{{ bid?.productTitle }}</p>
+</div>
