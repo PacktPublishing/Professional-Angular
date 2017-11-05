@@ -30,6 +30,7 @@ export class User {
 export class Bid {
     constructor(
         public amount: number,
+        public productTitle: string,
         public user: User
     ){}
 }

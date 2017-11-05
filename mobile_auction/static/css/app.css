@@ -52,8 +52,10 @@ h3{
     margin-top: 40px;
 }
 
-
 /* Borders for the right and left side panes */
+.side-pane-left, .side-pane-right{
+    height: calc(100vh - 90px);
+}
 .side-pane-right{
     border-right: 1px solid lightgray;
 }
