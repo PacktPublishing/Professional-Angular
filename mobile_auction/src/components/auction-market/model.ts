@@ -3,6 +3,7 @@ export class Product {
         public title: string,
         public image: string,
         public description: string,
+        public specLink: string,
         public askingPrice: number,
         public sellingPrice: number
     ){}

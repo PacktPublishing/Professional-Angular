@@ -1,5 +1,7 @@
 <h3 class="text-center">Up Next</h3>
 <div class="text-center next-product" *ngFor="let productAuction of auctionPreview">
-  <img class="img-responsive" [src]="'/static/images/' + productAuction.product.image" >
-  <p class="m-n m-t-md">{{productAuction.product.title}}</p>
+  <a [href]="productAuction.product.link" target="_blank">
+    <img class="img-responsive" [src]="'/static/images/' + productAuction.product.image" >
+    <p class="m-n m-t-md">{{productAuction.product.title}}</p>
+  </a>
 </div>
