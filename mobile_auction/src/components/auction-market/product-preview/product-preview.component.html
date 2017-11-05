@@ -1,0 +1,13 @@
+<h3 class="text-center">Up Next</h3>
+<div class="text-center next-product" *ngFor="let productAuction of auctionPreview">
+  <img class="img-responsive" [src]="'/static/images/' + productAuction.product.image" >
+  <p class="m-n m-t-md">{{productAuction.product.title}}</p>
+</div>
+<!-- <div class="text-center next-product">
+  <img class="img-responsive" src="/static/images/GALAXY_Note _5.jpeg" >
+  <p class="m-n m-t-md">Samsung Note 5</p>
+</div>
+<div class="text-center next-product">
+  <img class="img-responsive" src="/static/images/htc_one_a9.jpg" >
+  <p class="m-n m-t-md">HTC One A9</p>
+</div> -->

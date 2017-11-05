@@ -1,5 +1,8 @@
 <div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
+  <div class="col-sm-2 side-pane-right">
+    <users-bids [bid]="bid"></users-bids>
+  </div>
+  <div class="col-sm-8">
     <div class="m-r-md m-l-md auction">
       <h3>Auction</h3>
       <div class="row m-t-md">
@@ -37,5 +40,8 @@
         <p class="text-danger text-light">{{errorMessages.bidError}}</p>
       </div>
     </div>
+  </div>
+  <div class="col-sm-2 side-pane-left">
+    <product-preview [auction]='auction' [currentProductAuction]='currentProductIndex'></product-preview>
   </div>
 </div>
