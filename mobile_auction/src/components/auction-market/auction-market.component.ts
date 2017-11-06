@@ -193,7 +193,7 @@ export class AuctionMarketComponent implements OnInit {
       new ProductAuction(
         new Product(
           'Samsung Galaxy J5 (2016)',
-          'Samsung Galaxy_J5_(2016).png',
+          'Samsung_Galaxy_J5_(2016).png',
           'The Samsung Galaxy J5 (2016) is powered by 1.2GHz quad-core processor and it comes with 2GB of RAM. The phone packs 16GB of internal storage that can be expanded up to 128GB via a microSD card. As far as the cameras are concerned, the Samsung Galaxy J5 (2016) packs a 13-megapixel primary camera on the rear and a 5-megapixel front shooter for selfies.',
           'http://gadgets.ndtv.com/samsung-galaxy-j5-2016-3398',
           280,
