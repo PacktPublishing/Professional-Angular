@@ -5,39 +5,68 @@
   <div class="col-sm-8">
     <div class="m-r-md m-l-md auction">
       <h3>Auction</h3>
-      <div class="row m-t-md">
-        <div class="col-sm-7">
-          <img class="img-responsive" [src]="'/static/images/' + currentProductAuction.product.image" >
-        </div>
-        <div class="col-sm-5">
-          <div class="well">
-            <h4>{{currentProductAuction.product.title}}</h4>
-            <p>
-              Price:
-              <span class="text-medium">$ {{currentProductAuction.product.sellingPrice}} </span>
-            </p>
-            <p class="text-medium">
-              {{currentProductAuction.product.description}}
-            </p>
-            <p>
-              Time Left:
-              <span class="text-medium">{{currentProductAuction.duration - productAuctionRunningDuration}}</span>
-            </p>
+      <div *ngIf="!auctionEnded">
+        <div class="row m-t-md">
+          <div class="col-sm-7">
+            <img class="img-responsive" [src]="'/static/images/' + currentProductAuction.product.image" >
           </div>
+          <div class="col-sm-5">
+            <div class="well">
+              <h4>{{currentProductAuction.product.title}}</h4>
+              <p>
+                Price:
+                <span class="text-medium">$ {{currentProductAuction.product.sellingPrice}} </span>
+              </p>
+              <p class="text-medium">
+                {{currentProductAuction.product.description}}
+              </p>
+              <p>
+                Time Left:
+                <span class="text-medium">{{currentProductAuction.duration - productAuctionRunningDuration | secondsToTime}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="m-t-lg">
+          <h3 class="text-light">Your bid</h3>
+          <div class="form-group row">
+            <div class="col-xs-4">
+              <input class="form-control" type="number" placeholder="Amount" (input)="bidAmount = $event.target.value">
+            </div>
+            <div class="col-xs-8">
+              <button type="button" class="btn btn-success" (click)="onBid()">Place bid</button>
+            </div>
+          </div>
+          <p class="text-danger text-light">{{errorMessages.userError}}</p>
+          <p class="text-danger text-light">{{errorMessages.bidError}}</p>
         </div>
       </div>
-      <div class="m-t-lg">
-        <h3 class="text-light">Your bid</h3>
-        <div class="form-group row">
-          <div class="col-xs-4">
-            <input class="form-control" type="number" placeholder="Amount" (input)="bidAmount = $event.target.value">
+      <div *ngIf="auctionEnded">
+        <div>
+          <h3 class="text-light">Products Sold</h3>
+          <div class="row m-b-lg">
+            <div class="col-sm-6">
+              Product Titile
+            </div>
+            <div class="col-sm-3">
+              Hammer Price
+            </div>
+            <div class="col-sm-3">
+              User
+            </div>
           </div>
-          <div class="col-xs-8">
-            <button type="button" class="btn btn-success" (click)="onBid()">Place bid</button>
+          <div class="row" *ngFor="let product of auctionResult.sold">
+            <div class="col-sm-6">
+              {{product.title}}
+            </div>
+            <div class="col-sm-3">
+              ${{product.amount}}
+            </div>
+            <div class="col-sm-3">
+              {{product.user.name}}
+            </div>
           </div>
         </div>
-        <p class="text-danger text-light">{{errorMessages.userError}}</p>
-        <p class="text-danger text-light">{{errorMessages.bidError}}</p>
       </div>
     </div>
   </div>

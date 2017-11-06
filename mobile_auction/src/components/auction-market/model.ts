@@ -3,6 +3,7 @@ export class Product {
         public title: string,
         public image: string,
         public description: string,
+        public specLink: string,
         public askingPrice: number,
         public sellingPrice: number
     ){}
@@ -40,4 +41,10 @@ export class ErrorMessages {
         public userError: string,
         public bidError: string
     ){}
+}
+
+export class AuctionResult{
+    constructor(
+        public sold: Array<Object>
+    ) {}
 }
