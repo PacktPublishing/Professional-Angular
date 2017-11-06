@@ -78,7 +78,7 @@ export class AuctionMarketComponent implements OnInit {
       new ProductAuction(
         new Product(
           'Samsung Galaxy Note 5',
-          'GALAXY_Note _5.jpeg',
+          'GALAXY_Note_5.jpeg',
           'The Galaxy Note 5 carries over hardware and software features from the Galaxy S6, including a refreshed design with a glass backing, improved camera, and fingerprint scanner. The device also includes built in livestreaming functionality as well as features meant for use with the device\'s bundled, spring-loaded stylus. The device was released together with the Samsung Galaxy S6 Edge+.',
           300
         ),
@@ -96,7 +96,7 @@ export class AuctionMarketComponent implements OnInit {
       new ProductAuction(
         new Product(
           'Huawei Ascend Mate 7',
-          'huawei_ascend mate_7.jpg',
+          'huawei_ascend_mate_7.jpg',
           'The Huawei Ascend Mate 7 is powered by 1.3GHz octa-core processor and it comes with 2GB of RAM. The phone packs 16GB of internal storage that can be expanded up to 32GB via a microSD card. As far as the cameras are concerned, the Huawei Ascend Mate 7 packs a 13-megapixel primary camera on the rear and a 5-megapixel front shooter for selfies.',
           480
         ),
@@ -159,7 +159,7 @@ export class AuctionMarketComponent implements OnInit {
       new ProductAuction(
         new Product(
           'Samsung Galaxy J5 (2016)',
-          'Samsung Galaxy_J5_(2016).png',
+          'Samsung_Galaxy_J5_(2016).png',
           'The Samsung Galaxy J5 (2016) is powered by 1.2GHz quad-core processor and it comes with 2GB of RAM. The phone packs 16GB of internal storage that can be expanded up to 128GB via a microSD card. As far as the cameras are concerned, the Samsung Galaxy J5 (2016) packs a 13-megapixel primary camera on the rear and a 5-megapixel front shooter for selfies.',
           280
         ),
