@@ -23,8 +23,7 @@ export class AuctionMarketComponent implements OnInit {
     this.errorMessages = new ErrorMessages('', '');
     this.auctionEnded = false;
     this.auctionResult = {
-      sold: [],
-      notSold: []
+      sold: []
     };
   }
 
@@ -75,8 +74,8 @@ export class AuctionMarketComponent implements OnInit {
   }
 
   calculateResults(productAuction: ProductAuction, nextProductAuction: ProductAuction){
-    if (productAuction && this.bid){
-      if (this.bid.amount >= productAuction.product.askingPrice) {
+    if (productAuction && this.bid) {
+      if (this.bid.amount >= productAuction.product.askingPrice && this.bid.productTitle === productAuction.product.title) {
         this.auctionResult.sold.push({
           title: productAuction.product.title,
           amount: this.bid.amount,
@@ -84,7 +83,7 @@ export class AuctionMarketComponent implements OnInit {
         })
       }
     }
-    if(!nextProductAuction){
+    if (!nextProductAuction) {
       this.auctionEnded = true;
     }
   }
@@ -130,7 +129,7 @@ export class AuctionMarketComponent implements OnInit {
           830,
           0
         ),
-        40
+        10
       ),
       new ProductAuction(
         new Product(
@@ -141,7 +140,7 @@ export class AuctionMarketComponent implements OnInit {
           500,
           0
         ),
-        20
+        10
       ),
       new ProductAuction(
         new Product(
@@ -152,7 +151,7 @@ export class AuctionMarketComponent implements OnInit {
           300,
           0
         ),
-        20
+        10
       ),
       new ProductAuction(
         new Product(
@@ -163,7 +162,7 @@ export class AuctionMarketComponent implements OnInit {
           400,
           0
         ),
-        5
+        10
       ),
       new ProductAuction(
         new Product(

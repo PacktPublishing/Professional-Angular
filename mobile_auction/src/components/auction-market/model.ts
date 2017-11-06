@@ -45,7 +45,6 @@ export class ErrorMessages {
 
 export class AuctionResult{
     constructor(
-        public sold: Array<Object>,
-        public notSold: Array<string>
+        public sold: Array<Object>
     ) {}
 }
