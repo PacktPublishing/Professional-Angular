@@ -42,3 +42,10 @@ export class ErrorMessages {
         public bidError: string
     ){}
 }
+
+export class AuctionResult{
+    constructor(
+        public sold: Array<Object>,
+        public notSold: Array<string>
+    ) {}
+}

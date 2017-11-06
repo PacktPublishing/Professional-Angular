@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Auction, Product, ProductAuction, Bid, User, ErrorMessages } from './model';
+import { Auction, Product, ProductAuction, Bid, User, ErrorMessages, AuctionResult } from './model';
 
 @Component({
   selector: 'auction-market',
@@ -15,10 +15,17 @@ export class AuctionMarketComponent implements OnInit {
   bid: Bid;
   user: User;
   errorMessages: ErrorMessages;
+  auctionEnded: boolean;
+  auctionResult: AuctionResult;
 
   constructor() {
     this.auction = this.buildAuction();
     this.errorMessages = new ErrorMessages('', '');
+    this.auctionEnded = false;
+    this.auctionResult = {
+      sold: [],
+      notSold: []
+    };
   }
 
   ngOnInit() {
@@ -46,15 +53,16 @@ export class AuctionMarketComponent implements OnInit {
       if (this.productAuctionRunningDuration >= this.currentProductAuction.duration) {
         clearInterval(this.productAuctionTrackingInterval);
         let next: ProductAuction = this.getNextProductAuction();
+        this.calculateResults(productAuction, next);
         if (next) {
           this.startProductAuction(next);
-          this.currentProductIndex++
-        }
-        if (localStorage.getItem('productSellingPrice')) {
-          localStorage.removeItem('productSellingPrice')
+          this.currentProductIndex++;
         }
         else {
           console.log("Auction Ended!");
+        }
+        if (localStorage.getItem('productSellingPrice')) {
+          localStorage.removeItem('productSellingPrice');
         }
         return;
       }
@@ -64,6 +72,50 @@ export class AuctionMarketComponent implements OnInit {
       }
       ++this.productAuctionRunningDuration;
     }, 1000);
+  }
+
+  calculateResults(productAuction: ProductAuction, nextProductAuction: ProductAuction){
+    if (productAuction && this.bid){
+      if (this.bid.amount >= productAuction.product.askingPrice) {
+        this.auctionResult.sold.push({
+          title: productAuction.product.title,
+          amount: this.bid.amount,
+          user: this.getUser()
+        })
+      }
+    }
+    if(!nextProductAuction){
+      this.auctionEnded = true;
+    }
+  }
+
+  getUser(): User {
+    let user = JSON.parse(sessionStorage.getItem('currentUser'))
+    if (!user) {
+      this.errorMessages.userError = 'User not found, please create a user above.';
+      return null;
+    }
+    if (this.errorMessages.userError) {
+      this.errorMessages.userError = '';
+    }
+    return user;
+  }
+
+  onBid() {
+    this.user = this.getUser()
+    if (this.user && this.productAuctionRunningDuration < this.currentProductAuction.duration) {
+      if (this.bidAmount > this.currentProductAuction.product.sellingPrice) {
+        this.bid = new Bid(+this.bidAmount, this.currentProductAuction.product.title, this.user)
+        this.currentProductAuction.product.sellingPrice = this.bid.amount;
+        localStorage.setItem('productSellingPrice', this.currentProductAuction.product.sellingPrice.toString())
+      }
+      else{
+        this.errorMessages.bidError = 'Your bid is too low'
+      }
+    }
+    else{
+      this.errorMessages.bidError = 'You cannot place bids at the moment.'
+    }
   }
 
   buildAuction(): Auction {
@@ -247,34 +299,5 @@ export class AuctionMarketComponent implements OnInit {
       )
     )
     return auction;
-  }
-
-  getUser(): User {
-    let user = JSON.parse(sessionStorage.getItem('currentUser'))
-    if (!user) {
-      this.errorMessages.userError = 'User not found, please create a user above.';
-      return null;
-    }
-    if (this.errorMessages.userError) {
-      this.errorMessages.userError = '';
-    }
-    return user;
-  }
-
-  onBid() {
-    this.user = this.getUser()
-    if (this.user && this.productAuctionRunningDuration < this.currentProductAuction.duration) {
-      if (this.bidAmount > this.currentProductAuction.product.sellingPrice) {
-        this.bid = new Bid(+this.bidAmount, this.currentProductAuction.product.title, this.user)
-        this.currentProductAuction.product.sellingPrice = this.bid.amount;
-        localStorage.setItem('productSellingPrice', this.currentProductAuction.product.sellingPrice.toString())
-      }
-      else{
-        this.errorMessages.bidError = 'Your bid is too low'
-      }
-    }
-    else{
-      this.errorMessages.bidError = 'You cannot place bids at the moment.'
-    }
   }
 }
