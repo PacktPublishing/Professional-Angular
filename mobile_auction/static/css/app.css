@@ -9,7 +9,7 @@ h3{
     font-weight: 400;
 }
 
-/* Text weight utility classes */
+/* Text utility classes */
 .text-light{
     font-weight: 300;
 }
@@ -18,6 +18,9 @@ h3{
 }
 .text-medium{
     font-weight: 500;
+}
+.text-danger{
+    color: red;
 }
 
 /* Margin and padding utility classes */
@@ -48,15 +51,17 @@ h3{
 .m-t-lg{
     margin-top: 40px;
 }
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.m-b-md{
+    margin-bottom: 20px;
+}
+.m-b-lg{
+    margin-bottom: 40px;
 }
 
 /* Borders for the right and left side panes */
+.side-pane-left, .side-pane-right{
+    height: calc(100vh - 90px);
+}
 .side-pane-right{
     border-right: 1px solid lightgray;
 }
@@ -70,4 +75,7 @@ textarea {
     border: 1px solid lightgray;
     border-radius: 4px;
     padding: 20px;
+}
+.auction img{
+    height: 300px;
 }
