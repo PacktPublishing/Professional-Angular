@@ -51,9 +51,17 @@ h3{
 .m-t-lg{
     margin-top: 40px;
 }
-
+.m-b-md{
+    margin-bottom: 20px;
+}
+.m-b-lg{
+    margin-bottom: 40px;
+}
 
 /* Borders for the right and left side panes */
+.side-pane-left, .side-pane-right{
+    height: calc(100vh - 90px);
+}
 .side-pane-right{
     border-right: 1px solid lightgray;
 }
