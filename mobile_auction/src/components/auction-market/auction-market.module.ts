@@ -5,7 +5,7 @@ import { AuctionMarketComponent } from '../auction-market/auction-market.compone
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
 import { UsersBidsComponent } from './users-bids/users-bids.component';
 import { SecondsToTimePipe } from './seconds-to-time.pipe';
-import { ReversePipe } from './reverse.pipe'
+import { ReversePipe } from './reverse.pipe';
 
 @NgModule({
   imports: [BrowserModule],
