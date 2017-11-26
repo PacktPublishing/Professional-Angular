@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Auction, Product, ProductAuction, Bid, User, ErrorMessages, AuctionResult } from './model';
 
 @Component({
@@ -18,7 +20,7 @@ export class AuctionMarketComponent implements OnInit {
   auctionEnded: boolean;
   auctionResult: AuctionResult;
 
-  constructor() {
+  constructor(private router: Router) {
     this.auction = this.buildAuction();
     this.errorMessages = new ErrorMessages('', '');
     this.auctionEnded = false;
@@ -58,7 +60,7 @@ export class AuctionMarketComponent implements OnInit {
           this.currentProductIndex++;
         }
         else {
-          console.log("Auction Ended!");
+          this.router.navigate(['/finish']);
         }
         if (localStorage.getItem('productSellingPrice')) {
           localStorage.removeItem('productSellingPrice');
