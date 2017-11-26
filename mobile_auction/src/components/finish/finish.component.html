@@ -1,4 +1,33 @@
-<div class="text-center m-t-lg">
-    <h2>Auction Eneded</h2>
-    <h3>Thanks for participating.</h3>
+<div class="m-t-lg">
+    <div class="text-center">
+        <h2>Auction Finished</h2>
+        <h3>Thanks for participating.</h3>
+        <hr>
+        <h2>Auction Results</h2>
+    </div>
+    <div>
+        <h3 class="text-light m-b-lg">Products Sold</h3>
+        <div class="row">
+            <div class="col-sm-6">
+            Product Titile
+            </div>
+            <div class="col-sm-3">
+            Hammer Price
+            </div>
+            <div class="col-sm-3">
+            User
+            </div>
+        </div>
+        <div class="row" *ngFor="let product of products.sold">
+            <div class="col-sm-6">
+            {{product.title}}
+            </div>
+            <div class="col-sm-3">
+            ${{product.amount}}
+            </div>
+            <div class="col-sm-3">
+            {{product.user.name}}
+            </div>
+        </div>
+    </div>
 </div>

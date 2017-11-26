@@ -4,4 +4,4 @@ import {Component} from '@angular/core';
     selector: 'mobile-auction-app',
     templateUrl: '/src/components/start/start.component.html'
 })
-export class StartComponent {}
+export class StartComponent { }

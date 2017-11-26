@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { Auction, Product, ProductAuction, Bid, User, ErrorMessages, AuctionResult } from './model';
 
+import { AuctionResultService } from './../../services/auction-result.service';
+
 @Component({
   selector: 'auction-market',
   templateUrl: '/src/components/auction-market/auction-market.component.html'
@@ -17,16 +19,13 @@ export class AuctionMarketComponent implements OnInit {
   bid: Bid;
   user: User;
   errorMessages: ErrorMessages;
-  auctionEnded: boolean;
-  auctionResult: AuctionResult;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private auctionResultService: AuctionResultService
+  ) {
     this.auction = this.buildAuction();
     this.errorMessages = new ErrorMessages('', '');
-    this.auctionEnded = false;
-    this.auctionResult = {
-      sold: []
-    };
   }
 
   ngOnInit() {
@@ -54,7 +53,7 @@ export class AuctionMarketComponent implements OnInit {
       if (this.productAuctionRunningDuration >= this.currentProductAuction.duration) {
         clearInterval(this.productAuctionTrackingInterval);
         let next: ProductAuction = this.getNextProductAuction();
-        this.calculateResults(productAuction, next);
+        this.auctionResultService.calculateResults(productAuction, next, this.bid, this.getUser());
         if (next) {
           this.startProductAuction(next);
           this.currentProductIndex++;
@@ -73,21 +72,6 @@ export class AuctionMarketComponent implements OnInit {
       }
       ++this.productAuctionRunningDuration;
     }, 1000);
-  }
-
-  calculateResults(productAuction: ProductAuction, nextProductAuction: ProductAuction){
-    if (productAuction && this.bid) {
-      if (this.bid.amount >= productAuction.product.askingPrice && this.bid.productTitle === productAuction.product.title) {
-        this.auctionResult.sold.push({
-          title: productAuction.product.title,
-          amount: this.bid.amount,
-          user: this.getUser()
-        })
-      }
-    }
-    if (!nextProductAuction) {
-      this.auctionEnded = true;
-    }
   }
 
   getUser(): User {

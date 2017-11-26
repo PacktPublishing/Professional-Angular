@@ -7,7 +7,8 @@ import { FinishComponent }  from './finish.component';
 @NgModule({
     imports: [
         BrowserModule,
-        RouterModule],
+        RouterModule
+    ],
     declarations: [FinishComponent],
     exports: [FinishComponent],
 })

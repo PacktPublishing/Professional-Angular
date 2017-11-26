@@ -8,6 +8,7 @@ import { StartModule } from './../start/start.module';
 import { FinishModule } from './../finish/finish.module';
 
 import { Routing } from './app.routes';
+import { AuctionResultService } from '../../services/auction-result.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { Routing } from './app.routes';
     FinishModule
   ],
   declarations: [MobileAuctionAppComponent, HeaderComponent],
+  providers: [AuctionResultService],
   bootstrap: [MobileAuctionAppComponent]
 })
 export class AppModule { }
