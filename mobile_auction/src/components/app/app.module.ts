@@ -10,9 +10,14 @@ import { FinishModule } from './../finish/finish.module';
 import { Routing } from './app.routes';
 import { AuctionResultService } from '../../services/auction-result.service';
 
+import { ModalModule } from 'ngx-modialog';
+import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
+
 @NgModule({
   imports: [
     BrowserModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule,
     AuctionMarketModule,
     Routing,
     StartModule,
