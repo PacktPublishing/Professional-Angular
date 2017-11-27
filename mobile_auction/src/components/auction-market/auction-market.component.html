@@ -1,3 +1,4 @@
+<notification-component #notification></notification-component>
 <div class="row">
   <div class="col-sm-2 side-pane-right">
     <users-bids [bid]="bid"></users-bids>
@@ -42,6 +43,6 @@
     </div>
   </div>
   <div class="col-sm-2 side-pane-left">
-    <product-preview [auction]='auction' [currentProductAuction]='currentProductIndex'></product-preview>
+    <product-preview [auction]='auction' [currentProductAuction]='currentProductIndex' (auctionEnding)="notification.toggleNotification($event)"></product-preview>
   </div>
 </div>
