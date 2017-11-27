@@ -7,6 +7,7 @@ import { AuctionMarketComponent } from '../auction-market/auction-market.compone
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
 import { UsersBidsComponent } from './users-bids/users-bids.component';
 import { ProductModalComponent } from './product-preview/product-modal.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   imports: [BrowserModule, SharedModule],
@@ -14,7 +15,8 @@ import { ProductModalComponent } from './product-preview/product-modal.component
     AuctionMarketComponent, 
     ProductPreviewComponent, 
     UsersBidsComponent,
-    ProductModalComponent
+    ProductModalComponent,
+    NotificationComponent
   ],
   exports: [AuctionMarketComponent],
   entryComponents:[ProductModalComponent]

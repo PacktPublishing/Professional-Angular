@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Modal } from 'ngx-modialog/plugins/bootstrap';
 import { overlayConfigFactory } from 'ngx-modialog';
@@ -16,6 +16,7 @@ export class ProductPreviewComponent implements OnChanges {
   @Input() currentProductAuction: number;
   auctionPreview: ProductAuction[];
   safeProductLinks: Array<SafeResourceUrl>;
+  @Output() auctionEnding: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -24,7 +25,9 @@ export class ProductPreviewComponent implements OnChanges {
 
   ngOnChanges() {
     this.auctionPreview = this.auction.productAuctions.slice(this.currentProductAuction + 1, this.currentProductAuction + 4);
-    console.log(this.auctionPreview);
+    if (this.auctionPreview.length < 3){
+      this.auctionEnding.emit(true);
+    }
   }
 
   showModal(product: Product) {
