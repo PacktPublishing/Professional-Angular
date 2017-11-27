@@ -24,7 +24,6 @@ export class ProductPreviewComponent implements OnChanges {
 
   ngOnChanges() {
     this.auctionPreview = this.auction.productAuctions.slice(this.currentProductAuction + 1, this.currentProductAuction + 4);
-    console.log(this.auctionPreview);
   }
 
   showModal(product: Product) {
