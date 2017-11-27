@@ -1,15 +1,22 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { SharedModule } from './../shared/shared.module';
+
 import { AuctionMarketComponent } from '../auction-market/auction-market.component';
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
 import { UsersBidsComponent } from './users-bids/users-bids.component';
-import { SecondsToTimePipe } from './seconds-to-time.pipe';
-import { ReversePipe } from './reverse.pipe';
+import { ProductModalComponent } from './product-preview/product-modal.component';
 
 @NgModule({
-  imports: [BrowserModule],
-  declarations: [AuctionMarketComponent, ProductPreviewComponent, UsersBidsComponent, SecondsToTimePipe, ReversePipe],
-  exports: [AuctionMarketComponent]
+  imports: [BrowserModule, SharedModule],
+  declarations: [
+    AuctionMarketComponent, 
+    ProductPreviewComponent, 
+    UsersBidsComponent,
+    ProductModalComponent
+  ],
+  exports: [AuctionMarketComponent],
+  entryComponents:[ProductModalComponent]
 })
 export class AuctionMarketModule { }
