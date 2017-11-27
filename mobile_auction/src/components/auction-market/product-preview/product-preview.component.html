@@ -1,12 +1,7 @@
 <h3 class="text-center">Up Next</h3>
 <div class="text-center next-product" *ngFor="let productAuction of auctionPreview; let i = index">
-  <!-- <a [href]="safeProductLinks[i]" target="_blank">
+  <a [href]="safeProductLinks[i]" target="_blank">
     <img class="img-responsive" [src]="'/static/images/' + productAuction.product.image" >
     <p class="m-n m-t-md">{{productAuction.product.title}}</p>
-  </a> -->
-  <div (click)="showModal(safeProductLinks[i])">
-    <img class="img-responsive" [src]="'/static/images/' + productAuction.product.image" >
-    <p class="m-n m-t-md">{{productAuction.product.title}}</p>
-  </div>
-
+  </a>
 </div>
