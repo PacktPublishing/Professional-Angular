@@ -15,7 +15,6 @@ export class ProductPreviewComponent implements OnChanges {
   @Input() auction: Auction;
   @Input() currentProductAuction: number;
   auctionPreview: ProductAuction[];
-  safeProductLinks: Array<SafeResourceUrl>;
   @Output() auctionEnding: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
