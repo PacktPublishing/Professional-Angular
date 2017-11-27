@@ -1,6 +1,10 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Modal } from 'ngx-modialog/plugins/bootstrap';
+import { overlayConfigFactory } from 'ngx-modialog';
+
 import { Product, Auction, ProductAuction } from './../model';
+import {ProductModalComponent, ProductModalContext} from './product-modal.component';
 
 @Component({
   selector: 'product-preview',
@@ -13,7 +17,10 @@ export class ProductPreviewComponent implements OnChanges {
   auctionPreview: ProductAuction[];
   safeProductLinks: Array<SafeResourceUrl>;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(
+    private sanitizer: DomSanitizer,
+    private modal: Modal
+  ) {}
 
   ngOnChanges() {
     this.auctionPreview = this.auction.productAuctions.slice(this.currentProductAuction + 1, this.currentProductAuction + 4);
@@ -23,4 +30,8 @@ export class ProductPreviewComponent implements OnChanges {
       }
     )
   }
+
+  showModal(productLink: string) {
+    var dialog = this.modal.open(ProductModalComponent, overlayConfigFactory(new ProductModalContext(productLink)));
+  };
 }
