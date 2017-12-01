@@ -13,7 +13,10 @@ import { User } from './../auction-market/model';
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" [value]="user.name" (input)="user.name = $event.target.value">
           </div>
-          <button type="button" class="btn btn-default" (click)="createUser()">Submit</button>
+          <button type="button" class="btn btn-default m-r-md" (click)="createUser()">Submit</button>
+          <a class="m-r-md" [routerLink]="['/admin']">
+            Admin
+          </a>
         </div>
       </div>
     </nav>
