@@ -51,6 +51,9 @@ h3{
 .m-t-lg{
     margin-top: 40px;
 }
+.m-b-n{
+    margin-bottom: 0;
+}
 .m-b-md{
     margin-bottom: 20px;
 }
@@ -78,4 +81,20 @@ h3{
 }
 .auction img{
     height: 300px;
+}
+
+/* Styles for the admin module */
+.sub-nav{
+    padding: 15px 0;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+}
+.btn-wrapper{
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    margin: 5px 0;
+    padding: 15px 0;
+}
+.btn-wrapper .btn{
+    width: 100%;
 }
