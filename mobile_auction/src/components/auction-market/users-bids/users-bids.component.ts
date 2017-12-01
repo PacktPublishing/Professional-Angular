@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { Bid } from './../model';
+import { Bid } from './../../../services/model';
 
 @Component({
   selector: 'users-bids',

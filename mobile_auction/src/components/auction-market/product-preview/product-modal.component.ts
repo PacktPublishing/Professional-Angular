@@ -3,7 +3,7 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {DialogRef, ModalComponent} from 'ngx-modialog';
 import {BSModalContext} from 'ngx-modialog/plugins/bootstrap'
 
-import { Product } from '../model';
+import { Product } from '../../../services/model';
 
 export class ProductModalContext extends BSModalContext {
   constructor(public product: Product) {

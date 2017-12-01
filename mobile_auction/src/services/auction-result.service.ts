@@ -1,4 +1,4 @@
-import { ProductAuction, Bid, AuctionResult, User } from './../components/auction-market/model';
+import { ProductAuction, Bid, AuctionResult, User } from './model';
 
 export class AuctionResultService {
     auctionResult: AuctionResult;
