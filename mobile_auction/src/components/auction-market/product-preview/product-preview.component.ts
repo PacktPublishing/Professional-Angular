@@ -3,7 +3,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Modal } from 'ngx-modialog/plugins/bootstrap';
 import { overlayConfigFactory } from 'ngx-modialog';
 
-import { Product, Auction, ProductAuction } from './../model';
+import { Product, Auction, ProductAuction } from './../../../services/model';
 import {ProductModalComponent, ProductModalContext} from './product-modal.component';
 
 @Component({

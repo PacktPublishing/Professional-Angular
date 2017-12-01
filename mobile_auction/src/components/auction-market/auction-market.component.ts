@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Auction, Product, ProductAuction, Bid, User, ErrorMessages, AuctionResult } from './model';
+import { Auction, Product, ProductAuction, Bid, User, ErrorMessages, AuctionResult } from './../../services/model';
 
 import { AuctionResultService } from './../../services/auction-result.service';
 

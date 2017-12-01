@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product, AuctionResult } from './../auction-market/model';
+import { Product, AuctionResult } from './../../services/model';
 import { AuctionResultService } from './../../services/auction-result.service';
 
 @Component({

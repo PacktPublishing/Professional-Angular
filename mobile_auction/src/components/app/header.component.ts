@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { User } from './../auction-market/model';
+import { User } from './../../services/model';
 
 @Component({
     selector: 'header-component',
