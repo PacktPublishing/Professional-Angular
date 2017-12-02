@@ -4,7 +4,7 @@ import { User } from './../../services/model';
 @Component({
     selector: 'header-component',
     template: `
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default m-b-n">
       <div class="container-fluid">
         <div class="navbar-header">
           <h1>Mobile Auction</h1>

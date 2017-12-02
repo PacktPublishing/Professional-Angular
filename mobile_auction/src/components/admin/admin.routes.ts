@@ -9,7 +9,7 @@ import { ProductAuctionComponent } from './product-auction/product-auction.compo
 
 export const adminRoutes: Routes = [
     {
-        path: 'admin',
+        path: '',
         component: AdminComponent,
         children: [
              {path:'', pathMatch: 'full', redirectTo: 'auctions'},
