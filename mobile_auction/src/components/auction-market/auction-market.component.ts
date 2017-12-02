@@ -104,7 +104,7 @@ export class AuctionMarketComponent implements OnInit {
   }
 
   buildAuction(): Auction {
-    let auction = new Auction([]);
+    let auction = new Auction("Smartphone Auction", []);
     auction.productAuctions.push(
       new ProductAuction(
         new Product(

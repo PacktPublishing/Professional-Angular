@@ -72,8 +72,8 @@ h3{
     border-left: 1px solid lightgray;
 }
 
-/* Styles for the products in the right side pane */
-.next-product{
+/* Styles for the products in the right side pane and auction tiles*/
+.next-product, .auction-tile{
     margin-bottom: 20px;
     border: 1px solid lightgray;
     border-radius: 4px;
@@ -81,6 +81,9 @@ h3{
 }
 .auction img{
     height: 300px;
+}
+.auction-tile{
+    cursor: pointer;
 }
 
 /* Styles for the admin module */

@@ -1,5 +1,7 @@
+import {Injectable} from '@angular/core';
 import { ProductAuction, Bid, AuctionResult, User } from './model';
 
+@Injectable()
 export class AuctionResultService {
     auctionResult: AuctionResult;
 
