@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRouting } from './admin.routes';
+import { SharedModule } from './../shared/shared.module';
 
 import { AdminComponent } from './admin.component';
 import { AuctionsComponent } from './auctions/auctions.component';
@@ -14,7 +15,8 @@ import { SideNavComponent } from './navigation/side-nav.component';
 @NgModule({
     imports: [
         CommonModule,
-        AdminRouting
+        AdminRouting,
+        SharedModule
     ],
     declarations: [
         AdminComponent,

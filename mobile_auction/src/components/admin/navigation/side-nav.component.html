@@ -2,3 +2,6 @@
 <div class="btn-wrapper">
     <a [routerLink]="[preset.route]" class="btn btn-success">{{preset.newButton}}</a>
 </div>
+<div class="well text-center" *ngFor="let productAuction of productAuctions">
+    {{ productAuction?.product.title }}
+</div>

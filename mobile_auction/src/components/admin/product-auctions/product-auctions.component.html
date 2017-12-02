@@ -1,1 +1,14 @@
 <h3>Product Auctions</h3>
+<div class="row">
+    <div class="col-sm-4" *ngFor="let productAuction of productAuctions">
+        <div class="auction-tile">
+            <div (click)="onSelect(productAuction)">
+                <h4 class="text-center">{{productAuction.product.title}}</h4>
+                <hr>
+                <div>
+                    <p>Duration - {{ productAuction.duration | secondsToTime }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

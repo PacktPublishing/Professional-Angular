@@ -9,6 +9,7 @@ import { FinishModule } from './../finish/finish.module';
 
 import { Routing } from './app.routes';
 import { AuctionResultService } from '../../services/auction-result.service';
+import { AuctionService } from './../../services/auction.service';
 
 import { ModalModule } from 'ngx-modialog';
 import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
@@ -24,7 +25,10 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
     FinishModule
   ],
   declarations: [MobileAuctionAppComponent, HeaderComponent],
-  providers: [AuctionResultService],
+  providers: [
+    AuctionResultService,
+    AuctionService
+  ],
   bootstrap: [MobileAuctionAppComponent]
 })
 export class AppModule { }

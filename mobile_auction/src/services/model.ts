@@ -18,8 +18,15 @@ export class ProductAuction {
 
 export class Auction {
     constructor(
+        public title: string,
         public productAuctions: ProductAuction[]
     ){}
+
+    totalWorkoutDuration(): number {
+        let total = this.productAuctions.map((pa) => pa.duration).reduce((previous, current) => previous + current);
+
+        return total;;
+    }
 }
 
 export class User {
