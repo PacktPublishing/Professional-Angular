@@ -6,7 +6,6 @@ import { MobileAuctionAppComponent }  from './app.component';
 import { AuctionMarketModule } from './../auction-market/auction-market.module';
 import { StartModule } from './../start/start.module';
 import { FinishModule } from './../finish/finish.module';
-import { AdminModule } from './../admin/admin.module';
 
 import { Routing } from './app.routes';
 import { AuctionResultService } from '../../services/auction-result.service';
@@ -22,8 +21,7 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
     AuctionMarketModule,
     Routing,
     StartModule,
-    FinishModule,
-    AdminModule
+    FinishModule
   ],
   declarations: [MobileAuctionAppComponent, HeaderComponent],
   providers: [AuctionResultService],

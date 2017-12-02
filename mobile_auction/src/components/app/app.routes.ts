@@ -5,11 +5,18 @@ import { StartComponent } from '../start/start.component';
 import { FinishComponent } from '../finish/finish.component';
 import { AdminComponent } from './../admin/admin.component';
 
+const adminRoutes: Routes = [
+  {
+    path: 'admin',
+    loadChildren: 'dist/components/admin/admin.module#AdminModule'
+  }
+];
+
 export const routes: Routes = [
   { path: 'start', component: StartComponent },
   { path: 'auction-market', component: AuctionMarketComponent },
   { path: 'finish', component: FinishComponent },
-  { path: 'admin', component: AdminComponent },
+  ...adminRoutes,
   { path: '**', redirectTo: '/start' }
 ];
 

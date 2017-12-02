@@ -9,6 +9,7 @@ import { AuctionComponent } from './auction/auction.component';
 import { ProductAuctionsComponent } from './product-auctions/product-auctions.component';
 import { ProductAuctionComponent } from './product-auction/product-auction.component';
 import { SubNavComponent } from './navigation/sub-nav.component';
+import { SideNavComponent } from './navigation/side-nav.component';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { SubNavComponent } from './navigation/sub-nav.component';
         AuctionComponent,
         ProductAuctionsComponent,
         ProductAuctionComponent,
-        SubNavComponent
+        SubNavComponent,
+        SideNavComponent
     ],
     exports: [AdminComponent],
 })

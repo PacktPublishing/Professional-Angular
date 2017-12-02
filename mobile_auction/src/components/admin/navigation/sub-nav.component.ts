@@ -4,5 +4,4 @@ import { Component } from '@angular/core';
     selector: 'sub-nav',
     templateUrl: '/src/components/admin/navigation/sub-nav.component.html'
 })
-export class SubNavComponent{
-}
+export class SubNavComponent{ }
