@@ -2,6 +2,33 @@
     <div id="content-container" class="row">
         <div *ngIf="auction">
             <h2 class="col-sm-9">{{auction.title||'Auction Title'}} </h2>
+            <br>
+            <form #f="ngForm" name="formWorkout" (ngSubmit)="save(f.form)" class="row text-center m-b-lg" novalidate>
+                <div id="auction-data" class="col-sm-7 auction-data">
+                    <div class="form-group row">
+                        <label for="auction-title">Title:</label>
+                        <input type="text" name="title" class="form-control" id="auction-title" placeholder="What would be the auction title?" [(ngModel)]="auction.title">
+                    </div>
+                    <div class="form-group row">
+                        <label for="auction-description">Description:</label>
+                        <textarea name="description" class="form-control" id="auction-description" placeholder="Enter auction description." [(ngModel)]="auction.description"></textarea>
+                    </div>
+                    <div class="form-group row">
+                        <label>Total Product Auctions:</label>
+                        <p class="label label-primary label-as-badge">{{auction.productAuctions?.length}}</p>
+                    </div>
+                    <div class="form-group row">
+                        <label>Total Duration:</label>
+                        <p class="label label-primary label-as-badge" *ngIf="auction.productAuctions?.length>0">{{auction.totalAuctionDuration()|secondsToTime}}</p>
+                        <p class="label label-primary label-as-badge" *ngIf="auction.productAuctions?.length==0"></p>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="btn btn-warning">Save</button>
+                    </div>
+                </div>
+            </form>
+
+
             <div class="row">
                 <div *ngFor="let productAuction of auction.productAuctions; let i=index" class="col-sm-4">
                     <div class="next-product">

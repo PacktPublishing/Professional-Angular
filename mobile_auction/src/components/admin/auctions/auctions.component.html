@@ -6,7 +6,7 @@
                 <h4 class="text-center">{{auction.title}}</h4>
                 <hr>
                 <div>
-                    <p>Duration - {{ auction.totalWorkoutDuration() | secondsToTime }}</p>
+                    <p>Duration - {{ auction.totalAuctionDuration() | secondsToTime }}</p>
                     <p>Number of product auctions - {{ auction.productAuctions.length }}</p>
                 </div>
             </div>
