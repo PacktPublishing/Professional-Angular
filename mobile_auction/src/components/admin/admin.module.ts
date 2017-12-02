@@ -1,5 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AdminRouting } from './admin.routes';
 import { SharedModule } from './../shared/shared.module';
@@ -19,6 +20,7 @@ import { SideNavComponent } from './navigation/side-nav.component';
         CommonModule,
         AdminRouting,
         SharedModule,
+        FormsModule
     ],
     declarations: [
         AdminComponent,

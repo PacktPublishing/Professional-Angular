@@ -22,7 +22,7 @@ export class Auction {
         public productAuctions: ProductAuction[]
     ){}
 
-    totalWorkoutDuration(): number {
+    totalAuctionDuration(): number {
         let total = this.productAuctions.map((pa) => pa.duration).reduce((previous, current) => previous + current);
 
         return total;;
