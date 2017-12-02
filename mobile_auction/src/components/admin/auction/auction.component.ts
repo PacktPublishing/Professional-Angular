@@ -36,6 +36,11 @@ export class AuctionComponent {
         this.adminService.moveExerciseTo(productAuction, location);
     }
 
+    save(formAuction:any){
+        console.log("Submitting:");
+        console.log(this.auction);
+    }
+
     removeProductAuction(productAuction: ProductAuction) {
         this.adminService.removeProductAuction(productAuction);
     }
