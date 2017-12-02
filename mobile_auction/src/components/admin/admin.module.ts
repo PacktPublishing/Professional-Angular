@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRouting } from './admin.routes';
 import { SharedModule } from './../shared/shared.module';
+import { AdminService } from './admin-services/admin.service';
+import { AuctionGuard } from './auction/auction.guard';
 
 import { AdminComponent } from './admin.component';
 import { AuctionsComponent } from './auctions/auctions.component';
@@ -16,7 +18,7 @@ import { SideNavComponent } from './navigation/side-nav.component';
     imports: [
         CommonModule,
         AdminRouting,
-        SharedModule
+        SharedModule,
     ],
     declarations: [
         AdminComponent,
@@ -26,6 +28,10 @@ import { SideNavComponent } from './navigation/side-nav.component';
         ProductAuctionComponent,
         SubNavComponent,
         SideNavComponent
+    ],
+    providers: [
+        AdminService,
+        AuctionGuard
     ],
     exports: [AdminComponent],
 })

@@ -19,6 +19,13 @@ export class AuctionService {
         return this.auctions;
     }
 
+    getAuction(title: string){
+        for (var auction of this.auctions){
+            if (auction.title === title) return auction;
+        }
+        return null;
+    }
+
     setupInitialProductAuctions(){
         this.productAuctions.push(
             new ProductAuction(

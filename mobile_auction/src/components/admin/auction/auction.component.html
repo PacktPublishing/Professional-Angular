@@ -1,1 +1,28 @@
-<p>Auction component</p>
+<div class="container-fluid auction-container">
+    <div id="content-container" class="row">
+        <div *ngIf="auction">
+            <h2 class="col-sm-9">{{auction.title||'Auction Title'}} </h2>
+            <div class="row">
+                <div *ngFor="let productAuction of auction.productAuctions; let i=index" class="col-sm-4">
+                    <div class="next-product">
+                        <div class="title">
+                            {{productAuction.product.title}}
+                            <div class="pull-right" (click)="removeProductAuction(productAuction)"><span class="glyphicon glyphicon-trash"></span></div>
+                        </div>
+                        <div class="main">
+                            <div class="image">
+                                <img class="img-responsive" [src]="'/static/images/' + productAuction.product.image" />
+                            </div>
+                        </div>
+                        <div class="order">
+                            <button type="button" class="btn btn-info" (click)="moveProductAuctionTo(productAuction,0)"><span class="glyphicon glyphicon-upload"></span></button>
+                            <button type="button" class="btn btn-info" (click)="moveProductAuctionTo(productAuction,i-1)"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                            <button type="button" class="btn btn-info" (click)="moveProductAuctionTo(productAuction,i+1)"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-info" (click)="moveProductAuctionTo(productAuction,auction.productAuctions.length-1)"><span class="glyphicon glyphicon-download"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
