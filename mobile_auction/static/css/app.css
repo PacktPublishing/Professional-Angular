@@ -101,3 +101,7 @@ h3{
 .btn-wrapper .btn{
     width: 100%;
 }
+.auction-container img{
+    max-height: 170px;
+    padding: 10px;
+}

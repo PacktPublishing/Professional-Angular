@@ -38,7 +38,6 @@ export class ProductModalComponent implements ModalComponent<ProductModalContext
   ) { }
 
   ngOnInit(){
-    console.log(this.dialog.context)
     this.productLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.dialog.context.product.specLink);
   }
 

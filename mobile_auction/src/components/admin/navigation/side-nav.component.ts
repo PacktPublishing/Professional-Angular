@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
+import { ProductAuction, Product } from './../../../services/model';
 import { AuctionService } from './../../../services/auction.service';
-import { ProductAuction } from './../../../services/model';
+import { AdminService } from './../admin-services/admin.service';
 
 @Component({
     selector: 'side-nav',
@@ -20,10 +21,12 @@ export class SideNavComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: Router,
-        private auctionService: AuctionService
+        private auctionService: AuctionService,
+        private adminService: AdminService
     ) { }
 
     ngOnInit(){
+        this.generateLinks(this.router.url)
         this.subscription = this.router.events.subscribe(
             (navigationEnd: NavigationEnd) => {
                 let route = navigationEnd.url;
@@ -56,5 +59,8 @@ export class SideNavComponent implements OnInit, OnDestroy {
         if (route.includes('auction/')){
             this.productAuctions = this.auctionService.getProductAuctions();
         }
+    }
+    addProduct(product: Product) {
+        this.adminService.addProductAuction(new ProductAuction(product, 30));
     }
 }
