@@ -23,7 +23,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private auctionService: AuctionService,
-        private AuctionBuilderService: AuctionBuilderService
+        private auctionBuilderService: AuctionBuilderService
     ) { }
 
     ngOnInit(){
@@ -73,6 +73,6 @@ export class SideNavComponent implements OnInit, OnDestroy {
         }
     }
     addProduct(product: Product) {
-        this.AuctionBuilderService.addProductAuction(new ProductAuction(product, 30));
+        this.auctionBuilderService.addProductAuction(new ProductAuction(product, 30));
     }
 }
