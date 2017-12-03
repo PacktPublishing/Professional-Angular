@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuctionMarketComponent } from '../auction-market/auction-market.component';
 import { StartComponent } from '../start/start.component';
 import { FinishComponent } from '../finish/finish.component';
-import { AdminComponent } from './../admin/admin.component';
 
 const adminRoutes: Routes = [
   {
