@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { AuctionService } from './../../../services/auction.service';
 import { Auction, Product, ProductAuction } from './../../../services/model';
 
+
 @Injectable()
-export class AdminService {
+export class AuctionBuilderService {
     auction: Auction;
     newAuction: boolean;
     firstProductAuction: boolean = true;
@@ -41,5 +42,13 @@ export class AdminService {
         if (toIndex < 0 || toIndex >= this.auction.productAuctions.length) return;
         var currentIndex = this.auction.productAuctions.indexOf(productAuction);
         this.auction.productAuctions.splice(toIndex, 0, this.auction.productAuctions.splice(currentIndex, 1)[0]);
+    }
+
+    save(){
+        let auction = this.newAuction ?
+            this.auctionService.addWorkout(this.auction) :
+            this.auctionService.updateWorkout(this.auction);
+        this.newAuction = false;
+        return auction;
     }
 }

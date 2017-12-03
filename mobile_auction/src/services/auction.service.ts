@@ -15,6 +15,39 @@ export class AuctionService {
         return this.productAuctions;
     }
 
+    getProduct(productName: string){
+        for (var productAuction of this.productAuctions){
+            if (productAuction.product.title === productName) return productAuction.product;
+        }
+        return null;
+    }
+
+    updateProduct(product: Product){
+        for (var i = 0; i < this.productAuctions.length; i++) {
+            if (this.productAuctions[i].product.title === product.title) {
+                this.productAuctions[i].product = product;
+            }
+        }
+        return product;
+    }
+
+    addProduct(product: Product){
+        if (product.title) {
+            this.productAuctions.push(new ProductAuction(product, 20));
+            return product;
+        }
+    }
+
+    deleteProduct(productName: string){
+        let productIndex: number;
+        for (var i = 0; i < this.productAuctions.length; i++) {
+            if (this.productAuctions[i][productName].title === productName) {
+                productIndex = i;
+            }
+        }
+        if (productIndex >= 0) this.productAuctions.splice(productIndex, 1);
+    }
+
     getAuctions(){
         return this.auctions;
     }
@@ -212,5 +245,21 @@ export class AuctionService {
         let auction = new Auction("Smartphone Auction", productAuctions);
         
         this.auctions.push(auction);
+    }
+
+    addAuction(auction: Auction){
+        if (auction.title) {
+            this.auctions.push(auction);
+            return auction;
+        }
+    }
+
+    updateAuction(auction: Auction){
+        for (var i = 0; i < this.auctions.length; i++) {
+            if (this.auctions[i].title === auction.title) {
+                this.auctions[i] = auction;
+                break;
+            }
+        }
     }
 }

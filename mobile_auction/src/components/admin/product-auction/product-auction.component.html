@@ -1,1 +1,40 @@
-<p>Product-auction component</p>
+<div id="product-container" class="product-container">
+    <div class="row">
+        <h2 class="col-sm-8">
+            {{productForm.controls.title.value||'Product Title*'}}
+        </h2>
+    </div>
+    <form class="row" [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)" novalidate>
+        <div id="product-data" class="col-sm-6 product-data">
+            <div class="form-group row">
+                <label for="title">Title:</label>
+                <input title="title" formControlName="title" class="form-control" id="title" placeholder="Enter product title. Must be unique.">
+                <label *ngIf="productForm.controls.title.hasError('required') && (productForm.controls.title.touched || submitted)" class="alert alert-danger validation-message">Title is required</label>
+            </div>
+            <div class="form-group row">
+                <label for="product-description">Description:</label>
+                <textarea formControlName="description" class="form-control" id="product-description" placeholder="Enter product description." rows="10"></textarea>
+                <label *ngIf="productForm.controls.description.hasError('required') && (productForm.controls.description.touched || submitted)" class="alert alert-danger validation-message">Description is required</label>
+            </div>
+            <div class="form-group row">
+                <img id="img-preview" class="img-preview" [src]="'/static/images/' + productForm.controls.image.value"/><br />
+                <label for="exercise-image">Product Image</label>
+                <input type="text" formControlName="image" class="form-control" id="exercise-image" placeholder="Enter Product image url.">
+                <label *ngIf="productForm.controls.image.hasError('required') && (productForm.controls.image.touched || submitted)" class="alert alert-danger validation-message">Image url is required</label>
+            </div>
+            <div class="form-group row">
+                <label for="specLink">Product Specification Link:</label>
+                <input title="specLink" formControlName="specLink" class="form-control" id="specLink" placeholder="Enter product specification link.">
+                <label *ngIf="productForm.controls.specLink.hasError('required') && (productForm.controls.specLink.touched || submitted)" class="alert alert-danger validation-message">Product specification link is required</label>
+            </div>
+            <div class="form-group row">
+                <label for="askingPrice">Product Asking Price ($):</label>
+                <input title="askingPrice" type="number" formControlName="askingPrice" class="form-control" id="askingPrice" placeholder="Enter product specification link.">
+                <label *ngIf="productForm.controls.askingPrice.hasError('required') && (productForm.controls.askingPrice.touched || submitted)" class="alert alert-danger validation-message">Product asking price is required</label>
+            </div>
+            <div class="form-group row">
+                <button type="submit" class="btn btn-warning">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

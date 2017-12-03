@@ -1,11 +1,13 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AdminRouting } from './admin.routes';
 import { SharedModule } from './../shared/shared.module';
-import { AdminService } from './admin-services/admin.service';
+import { AuctionBuilderService } from './admin-services/auction-builder.service';
 import { AuctionGuard } from './auction/auction.guard';
+import { ProductAuctionBuilderService } from './admin-services/product-auction-builder.service';
+import { ProductAuctionGuard } from './product-auction/product-auction.guard';
 
 import { AdminComponent } from './admin.component';
 import { AuctionsComponent } from './auctions/auctions.component';
@@ -20,7 +22,8 @@ import { SideNavComponent } from './navigation/side-nav.component';
         CommonModule,
         AdminRouting,
         SharedModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         AdminComponent,
@@ -32,8 +35,10 @@ import { SideNavComponent } from './navigation/side-nav.component';
         SideNavComponent
     ],
     providers: [
-        AdminService,
-        AuctionGuard
+        AuctionBuilderService,
+        AuctionGuard,
+        ProductAuctionBuilderService,
+        ProductAuctionGuard
     ],
     exports: [AdminComponent],
 })
