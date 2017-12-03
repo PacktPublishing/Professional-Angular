@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/Rx';
 
 import { ProductAuction, Product } from './../../../services/model';
 import { AuctionService } from './../../../services/auction.service';
-import { AdminService } from './../admin-services/admin.service';
+import { AuctionBuilderService } from './../admin-services/auction-builder.service';
 
 @Component({
     selector: 'side-nav',
@@ -22,7 +22,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private auctionService: AuctionService,
-        private adminService: AdminService
+        private auctionBuilderService: AuctionBuilderService
     ) { }
 
     ngOnInit(){
@@ -61,6 +61,6 @@ export class SideNavComponent implements OnInit, OnDestroy {
         }
     }
     addProduct(product: Product) {
-        this.adminService.addProductAuction(new ProductAuction(product, 30));
+        this.auctionBuilderService.addProductAuction(new ProductAuction(product, 30));
     }
 }

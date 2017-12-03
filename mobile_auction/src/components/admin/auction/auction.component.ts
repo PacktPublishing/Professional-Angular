@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
 import { Auction, ProductAuction } from './../../../services/model';
-import { AdminService } from './../admin-services/admin.service';
+import { AuctionBuilderService } from './../admin-services/auction-builder.service';
 
 @Component({
     selector: 'auction',
@@ -15,7 +15,7 @@ export class AuctionComponent {
 
     constructor(
         public route: ActivatedRoute,
-        public adminService: AdminService
+        public auctionBuilderService: AuctionBuilderService
     ) { }
 
     ngOnInit() {
@@ -24,20 +24,20 @@ export class AuctionComponent {
             if (!auctionName) {
                 auctionName = "";
             }
-            this.auction = this.adminService.createAuction(auctionName);
+            this.auction = this.auctionBuilderService.createAuction(auctionName);
         });
     }
 
     addProductAuction(productAuction: ProductAuction){
-        this.adminService.addProductAuction(productAuction);
+        this.auctionBuilderService.addProductAuction(productAuction);
     }
 
     moveProductAuctionTo(productAuction: ProductAuction, location: any) {
-        this.adminService.moveExerciseTo(productAuction, location);
+        this.auctionBuilderService.moveExerciseTo(productAuction, location);
     }
 
     removeProductAuction(productAuction: ProductAuction) {
-        this.adminService.removeProductAuction(productAuction);
+        this.auctionBuilderService.removeProductAuction(productAuction);
     }
 
     ngOnDestroy() {

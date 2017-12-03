@@ -4,7 +4,7 @@ import { AuctionService } from './../../../services/auction.service';
 import { Auction, Product, ProductAuction } from './../../../services/model';
 
 @Injectable()
-export class AdminService {
+export class AuctionBuilderService {
     auction: Auction;
     newAuction: boolean;
     firstProductAuction: boolean = true;
