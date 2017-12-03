@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/Rx';
 
 import { ProductAuction, Product } from './../../../services/model';
 import { AuctionService } from './../../../services/auction.service';
-import { AdminService } from './../admin-services/admin.service';
+import { AuctionBuilderService } from './../admin-services/auction-builder.service';
 
 @Component({
     selector: 'side-nav',
@@ -16,17 +16,19 @@ export class SideNavComponent implements OnInit, OnDestroy {
         title: 'Auctions',
         newButton: 'New Auction'
     };
+    showNav: boolean = true;
     productAuctions: ProductAuction[];
     private subscription: Subscription;
 
     constructor(
         private router: Router,
         private auctionService: AuctionService,
-        private adminService: AdminService
+        private AuctionBuilderService: AuctionBuilderService
     ) { }
 
     ngOnInit(){
-        this.generateLinks(this.router.url)
+        this.generateLinks(this.router.url);
+        this.hideNav(this.router.url);
         this.subscription = this.router.events.subscribe(
             (navigationEnd: NavigationEnd) => {
                 let route = navigationEnd.url;
@@ -38,6 +40,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
                         title: 'Product Auctions',
                         newButton: 'New Product Auction'
                     };
+                    this.hideNav(route);
                 }
                 else {
                     this.preset = {
@@ -46,6 +49,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
                         newButton: 'New Auction'
                     };
                     this.generateLinks(route);
+                    this.hideNav(route);
                 }
             }
         )
@@ -60,7 +64,15 @@ export class SideNavComponent implements OnInit, OnDestroy {
             this.productAuctions = this.auctionService.getProductAuctions();
         }
     }
+    hideNav(route: string){
+        if (route.includes('product-auction/')) {
+            this.showNav = false;
+        }
+        else{
+            this.showNav = true;
+        }
+    }
     addProduct(product: Product) {
-        this.adminService.addProductAuction(new ProductAuction(product, 30));
+        this.AuctionBuilderService.addProductAuction(new ProductAuction(product, 30));
     }
 }

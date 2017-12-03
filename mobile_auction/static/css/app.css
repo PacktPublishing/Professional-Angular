@@ -105,3 +105,40 @@ h3{
     max-height: 170px;
     padding: 10px;
 }
+.clickable{
+    cursor: pointer;
+}
+
+/* styles for validation helpers - start*/
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.validation-message{
+    width:280px
+}
+
+.extended-validation-message{
+    width:320px
+}
+/* styles for validation helpers - end */

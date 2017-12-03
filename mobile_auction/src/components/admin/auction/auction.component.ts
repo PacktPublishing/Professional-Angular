@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
 import { Auction, ProductAuction } from './../../../services/model';
-import { AdminService } from './../admin-services/admin.service';
+import { AuctionBuilderService } from './../admin-services/auction-builder.service';
 
 @Component({
     selector: 'auction',
@@ -12,10 +12,13 @@ import { AdminService } from './../admin-services/admin.service';
 export class AuctionComponent { 
     auction: Auction;
     subscription: Subscription;
+    submitted: boolean = false;
+    removeTouched: boolean = false;
 
     constructor(
         public route: ActivatedRoute,
-        public adminService: AdminService
+        public router: Router,
+        public AuctionBuilderService: AuctionBuilderService
     ) { }
 
     ngOnInit() {
@@ -24,16 +27,23 @@ export class AuctionComponent {
             if (!auctionName) {
                 auctionName = "";
             }
-            this.auction = this.adminService.createAuction(auctionName);
+            this.auction = this.AuctionBuilderService.createAuction(auctionName);
         });
     }
 
     addProductAuction(productAuction: ProductAuction){
-        this.adminService.addProductAuction(productAuction);
+        this.AuctionBuilderService.addProductAuction(productAuction);
     }
 
     moveProductAuctionTo(productAuction: ProductAuction, location: any) {
-        this.adminService.moveExerciseTo(productAuction, location);
+        this.AuctionBuilderService.moveExerciseTo(productAuction, location);
+    }
+
+    save(formAuction:any){
+        this.submitted = true;
+        if (!formAuction.valid) return;
+        this.AuctionBuilderService.save();
+        this.router.navigate(['/admin/auctions']);
     }
 
     save(formAuction:any){
@@ -42,7 +52,8 @@ export class AuctionComponent {
     }
 
     removeProductAuction(productAuction: ProductAuction) {
-        this.adminService.removeProductAuction(productAuction);
+        this.removeTouched = true;
+        this.AuctionBuilderService.removeProductAuction(productAuction);
     }
 
     ngOnDestroy() {
