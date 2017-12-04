@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
@@ -9,7 +9,7 @@ import { AuctionBuilderService } from './../admin-services/auction-builder.servi
     selector: 'auction',
     templateUrl: '/src/components/admin/auction/auction.component.html'
 })
-export class AuctionComponent { 
+export class AuctionComponent implements OnInit, OnDestroy { 
     auction: Auction;
     subscription: Subscription;
     submitted: boolean = false;

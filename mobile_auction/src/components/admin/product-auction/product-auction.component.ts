@@ -9,7 +9,7 @@ import { Product} from "../../../services/model";
     selector: 'product-auction',
     templateUrl: '/src/components/admin/product-auction/product-auction.component.html'
 })
-export class ProductAuctionComponent { 
+export class ProductAuctionComponent implements OnInit, OnDestroy { 
     product: Product;
     submitted: boolean = false;
     productForm: FormGroup;
