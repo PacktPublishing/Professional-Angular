@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 @Component({
     template: `
         <div class="sub-nav">
-            <sub-nav #subNav></sub-nav>
+            <sub-nav></sub-nav>
         </div>
         <div class="row">
             <div class="col-sm-2 side-pane-right">

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ProductAuction } from './../../../services/model';
@@ -8,7 +8,7 @@ import { AuctionService } from './../../../services/auction.service';
     selector: 'product-auctions',
     templateUrl: '/src/components/admin/product-auctions/product-auctions.component.html'
 })
-export class ProductAuctionsComponent {
+export class ProductAuctionsComponent implements OnInit {
     productAuctions: ProductAuction[] = []
     
     constructor(
