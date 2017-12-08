@@ -46,11 +46,6 @@ export class AuctionComponent implements OnInit, OnDestroy {
         this.router.navigate(['/admin/auctions']);
     }
 
-    save(formAuction:any){
-        console.log("Submitting:");
-        console.log(this.auction);
-    }
-
     removeProductAuction(productAuction: ProductAuction) {
         this.removeTouched = true;
         this.auctionBuilderService.removeProductAuction(productAuction);
