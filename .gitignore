@@ -6,7 +6,6 @@
 
 # Logs and trash
 npm-debug.log*
-*~
 *.sw[mnpcod]
 *.log
 *.tmp
