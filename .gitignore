@@ -22,5 +22,5 @@ dist/
 
 # Transpiled files
 **/*.js
-!/systemjs.config.js
-!/gulpfile.js
+!mobile_auction/systemjs.config.js
+!mobile_auction/gulpfile.js
