@@ -6,7 +6,6 @@
 
 # Logs and trash
 npm-debug.log*
-*~
 *.sw[mnpcod]
 *.log
 *.tmp
@@ -23,3 +22,5 @@ dist/
 
 # Transpiled files
 **/*.js
+!mobile_auction/systemjs.config.js
+!mobile_auction/gulpfile.js
