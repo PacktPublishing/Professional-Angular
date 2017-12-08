@@ -32,7 +32,7 @@ export class ProductAuctionBuilderService {
     }
 
     delete(){
-        this.auctionService.deleteExercise(this.product.title);
+        this.auctionService.deleteProduct(this.product.title);
     }
 
     canDeleteExercise(){
