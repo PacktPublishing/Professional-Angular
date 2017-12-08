@@ -46,8 +46,8 @@ export class AuctionBuilderService {
 
     save(){
         let auction = this.newAuction ?
-            this.auctionService.addWorkout(this.auction) :
-            this.auctionService.updateWorkout(this.auction);
+            this.auctionService.addAuction(this.auction) :
+            this.auctionService.updateAuction(this.auction);
         this.newAuction = false;
         return auction;
     }
