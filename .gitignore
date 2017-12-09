@@ -24,3 +24,4 @@ dist/
 **/*.js
 !mobile_auction/systemjs.config.js
 !mobile_auction/gulpfile.js
+!mobile_auction/db/seed.js

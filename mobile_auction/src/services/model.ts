@@ -1,5 +1,6 @@
 export class Product {
     constructor(
+        public name: string,
         public title: string,
         public image: string,
         public description: string,
@@ -18,6 +19,7 @@ export class ProductAuction {
 
 export class Auction {
     constructor(
+        public name: string,
         public title: string,
         public productAuctions: ProductAuction[]
     ){}

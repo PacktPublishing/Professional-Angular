@@ -23,11 +23,29 @@ export class AuctionComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription = this.route.params.subscribe(params => {
-            let auctionName = params['id'];
-            if (!auctionName) {
-                auctionName = "";
+            if (!params['id']) {
+                this.auction = this.auctionBuilderService.startBuildingNew();
+            } else {
+                let auctionName = params['id'];
+                this.auctionBuilderService.startBuildingExisting(auctionName)
+                    .subscribe(
+                        (data:Auction) => {
+                            this.auction = <Auction>data;
+                            if (!this.auction) {
+                                this.router.navigate(['/admin/auctions']);
+                            } else {
+                                this.auctionBuilderService.auction = this.auction;
+                            }
+                        },
+                        (err:any) => {
+                            if (err.status === 404) {
+                                this.router.navigate(['/admin/auctions'])
+                            } else {
+                                console.error(err)
+                            }
+                        }
+                    );
             }
-            this.auction = this.auctionBuilderService.createAuction(auctionName);
         });
     }
 

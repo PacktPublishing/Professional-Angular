@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Validators, FormArray, FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
@@ -9,13 +9,14 @@ import { Product} from "../../../services/model";
     selector: 'product-auction',
     templateUrl: '/src/components/admin/product-auction/product-auction.component.html'
 })
-export class ProductAuctionComponent implements OnInit, OnDestroy { 
+export class ProductAuctionComponent implements OnInit, OnDestroy, DoCheck { 
     product: Product;
     submitted: boolean = false;
     productForm: FormGroup;
     model: any;
     video: any;
     subscription: any;
+    dataLoaded: boolean = false;
 
     constructor(
         public route: ActivatedRoute,
@@ -24,19 +25,45 @@ export class ProductAuctionComponent implements OnInit, OnDestroy {
         public formBuilder: FormBuilder
     ){}
 
-    ngOnInit():any{
+    ngOnInit(): any{
         this.subscription = this.route.params.subscribe(params => {
-            let productName = params['id'];
-            if (productName === 'new') {
-                productName = "";
+            if (!params['id']) {
+                this.product = this.productAuctionBuilderService.startBuildingNew();
+            } 
+            else {
+                let productName = params['id'];
+                this.productAuctionBuilderService.startBuildingExisting(productName)
+                    .subscribe(
+                        (data:Product) => {
+                            this.product = <Product>data;
+                            if (!this.product) {
+                                this.router.navigate(['/admin/product-auctions']);
+                            } else {
+                                this.productAuctionBuilderService.product = this.product;
+                            }
+                        },
+                        (err:any) => {
+                            if (err.status === 404) {
+                                this.router.navigate(['/admin/product-auctions'])
+                            } else {
+                                console.error(err)
+                            }
+                        }
+                    );
             }
-            this.product = this.productAuctionBuilderService.startBuilding(productName);
         });
+    }
 
-        this.buildProductForm();
+    ngDoCheck():any {
+        if (!this.dataLoaded) {
+            this.buildProductForm();
+        }
     }
 
     buildProductForm(){
+        if (this.product) {
+            this.dataLoaded = true;
+        }
         this.productForm = this.formBuilder.group({
             'title': [this.product.title, Validators.required],
             'description': [this.product.description, Validators.required],
@@ -60,7 +87,7 @@ export class ProductAuctionComponent implements OnInit, OnDestroy {
     }
 
     canDeleteProduct(){
-        this.productAuctionBuilderService.canDeleteExercise();
+        this.productAuctionBuilderService.canDeleteProduct();
     }
 
     mapFormValues(form: FormGroup){

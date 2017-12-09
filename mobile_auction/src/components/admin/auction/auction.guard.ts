@@ -17,7 +17,7 @@ export class AuctionGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ) {
-        this.auction = this.AuctionService.getAuction(decodeURI(route.params['id']));
+        this.auction = this.AuctionService.getAuction(route.params['id']);
         if(this.auction){ return true; }
         this.router.navigate(['/admin/auctions']);
         return false;

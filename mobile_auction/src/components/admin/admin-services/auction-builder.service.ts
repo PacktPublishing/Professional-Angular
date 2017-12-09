@@ -13,16 +13,17 @@ export class AuctionBuilderService {
     constructor(
         public auctionService: AuctionService
     ){}
-
-    createAuction(title: string){
-        if(title){
-            this.auction = this.auctionService.getAuction(title)
-            this.newAuction = false;
-        }else{
-            this.auction = new Auction("", []);
-            this.newAuction = true;
-        }
+    
+    startBuildingNew(){
+        let productAuctionArray : ProductAuction[] = [];
+        this.auction = new Auction("", "", productAuctionArray);
+        this.newAuction = true;
         return this.auction;
+    }
+
+    startBuildingExisting(name: string){
+        this.newAuction = false;
+        return this.auctionService.getAuction(name);
     }
 
     removeProductAuction(productAuction: ProductAuction){
