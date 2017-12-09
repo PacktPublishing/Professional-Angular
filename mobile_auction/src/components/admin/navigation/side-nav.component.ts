@@ -61,7 +61,13 @@ export class SideNavComponent implements OnInit, OnDestroy {
 
     generateLinks(route: string) {
         if (route.includes('auction/')){
-            this.productAuctions = this.auctionService.getProductAuctions();
+            this.auctionService.getProductAuctions()
+            .subscribe(
+                (productAuctions: ProductAuction[]) => {
+                    this.productAuctions = productAuctions;
+                },
+                (err: any) => console.error(err)
+            );
         }
     }
     hideNav(route: string){

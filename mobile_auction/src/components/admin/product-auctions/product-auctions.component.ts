@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ProductAuction } from './../../../services/model';
+import { ProductAuction, Product } from './../../../services/model';
 import { AuctionService } from './../../../services/auction.service';
 
 @Component({
@@ -9,7 +9,8 @@ import { AuctionService } from './../../../services/auction.service';
     templateUrl: '/src/components/admin/product-auctions/product-auctions.component.html'
 })
 export class ProductAuctionsComponent implements OnInit {
-    productAuctions: ProductAuction[] = []
+    productAuctions: ProductAuction[] = [];
+    subscription: any;
     
     constructor(
         private router: Router,
@@ -17,10 +18,16 @@ export class ProductAuctionsComponent implements OnInit {
     ) { }
 
     ngOnInit(){
-        this.productAuctions = this.auctionService.getProductAuctions()
+        this.auctionService.getProductAuctions()
+        .subscribe(
+            (productAuctions: ProductAuction[]) => {
+                this.productAuctions = productAuctions;
+            },
+            (err: any) => console.error(err)
+        );
     }
 
-    onSelect(productAuction: ProductAuction) {
-        this.router.navigate( ['./admin/product-auction', productAuction.product.title] );
+    onSelect(product: Product) {
+        this.router.navigate( ['./admin/product-auction', product.name] );
     }
  }

@@ -9,7 +9,8 @@ import { AuctionService } from './../../../services/auction.service';
     templateUrl: '/src/components/admin/auctions/auctions.component.html'
 })
 export class AuctionsComponent implements OnInit{ 
-    auctions: Auction[] = []
+    auctions: Auction[] = [];
+    subscription: any;
 
     constructor(
         private router: Router,
@@ -17,10 +18,14 @@ export class AuctionsComponent implements OnInit{
     ) { }
 
     ngOnInit(){
-        this.auctions = this.auctionService.getAuctions()
+        this.subscription = this.auctionService.getAuctions()
+        .subscribe(
+            (auctions: Auction[]) => this.auctions = auctions,
+            (err: any) => console.error(err)
+        );
     }
 
     onSelect(auction: Auction) {
-        this.router.navigate( ['./admin/auction', auction.title] );
+        this.router.navigate( ['./admin/auction', auction.name] );
     }
 }

@@ -1,5 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { HeaderComponent } from './header.component';
 import { MobileAuctionAppComponent }  from './app.component';
@@ -22,7 +23,8 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
     AuctionMarketModule,
     Routing,
     StartModule,
-    FinishModule
+    FinishModule,
+    HttpClientModule
   ],
   declarations: [MobileAuctionAppComponent, HeaderComponent],
   providers: [

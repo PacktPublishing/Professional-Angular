@@ -12,15 +12,15 @@ export class ProductAuctionBuilderService {
         private auctionService: AuctionService
     ) { }
 
-    startBuilding(title: string){
-        if(title){
-            this.product = this.auctionService.getProduct(title)
-            this.newProduct = false;
-        }else{
-            this.product = new Product("", "", "", "", "", null, null);
-            this.newProduct = true;
-        }
+    startBuildingNew(){
+        this.product = new Product("", "", "", "", "", null, null);
+        this.newProduct = true;
         return this.product;
+    }
+
+    startBuildingExisting(name: string){
+            this.newProduct = false;
+            return this.auctionService.getProduct(name)
     }
 
     save(){
@@ -35,7 +35,7 @@ export class ProductAuctionBuilderService {
         this.auctionService.deleteProduct(this.product.title);
     }
 
-    canDeleteExercise(){
+    canDeleteProduct(){
         return !this.newProduct;
     }
 }
