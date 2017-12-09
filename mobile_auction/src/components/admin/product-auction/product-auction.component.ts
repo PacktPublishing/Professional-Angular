@@ -29,21 +29,22 @@ export class ProductAuctionComponent implements OnInit, OnDestroy, DoCheck {
         this.subscription = this.route.params.subscribe(params => {
             if (!params['id']) {
                 this.product = this.productAuctionBuilderService.startBuildingNew();
-            } else {
+            } 
+            else {
                 let productName = params['id'];
                 this.productAuctionBuilderService.startBuildingExisting(productName)
                     .subscribe(
                         (data:Product) => {
-                            this.product = <Product> data;
+                            this.product = <Product>data;
                             if (!this.product) {
-                                this.router.navigate(['/admin/products']);
+                                this.router.navigate(['/admin/product-auctions']);
                             } else {
                                 this.productAuctionBuilderService.product = this.product;
                             }
                         },
                         (err:any) => {
                             if (err.status === 404) {
-                                this.router.navigate(['/admin/products'])
+                                this.router.navigate(['/admin/product-auctions'])
                             } else {
                                 console.error(err)
                             }
@@ -62,14 +63,14 @@ export class ProductAuctionComponent implements OnInit, OnDestroy, DoCheck {
     buildProductForm(){
         if (this.product) {
             this.dataLoaded = true;
-            this.productForm = this.formBuilder.group({
-                'title': [this.product.title, Validators.required],
-                'description': [this.product.description, Validators.required],
-                'image': [this.product.image, Validators.required],
-                'specLink': [this.product.specLink, Validators.required],
-                'askingPrice': [this.product.askingPrice, Validators.required]
-            })
         }
+        this.productForm = this.formBuilder.group({
+            'title': [this.product.title, Validators.required],
+            'description': [this.product.description, Validators.required],
+            'image': [this.product.image, Validators.required],
+            'specLink': [this.product.specLink, Validators.required],
+            'askingPrice': [this.product.askingPrice, Validators.required]
+        })
     }
 
     onSubmit(formProduct: FormGroup){
