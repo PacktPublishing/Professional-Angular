@@ -60,7 +60,7 @@ export class ProductAuctionComponent implements OnInit, OnDestroy {
     }
 
     canDeleteProduct(){
-        this.productAuctionBuilderService.canDeleteExercise();
+        this.productAuctionBuilderService.canDeleteProduct();
     }
 
     mapFormValues(form: FormGroup){
