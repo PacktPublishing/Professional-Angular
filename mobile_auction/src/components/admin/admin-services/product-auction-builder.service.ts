@@ -17,7 +17,7 @@ export class ProductAuctionBuilderService {
             this.product = this.auctionService.getProduct(title)
             this.newProduct = false;
         }else{
-            this.product = new Product("", "", "", "", null, null);
+            this.product = new Product("", "", "", "", "", null, null);
             this.newProduct = true;
         }
         return this.product;

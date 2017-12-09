@@ -19,7 +19,7 @@ export class AuctionBuilderService {
             this.auction = this.auctionService.getAuction(title)
             this.newAuction = false;
         }else{
-            this.auction = new Auction("", []);
+            this.auction = new Auction("", "", []);
             this.newAuction = true;
         }
         return this.auction;
