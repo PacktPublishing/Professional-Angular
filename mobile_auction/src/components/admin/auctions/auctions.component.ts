@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
 import { Auction } from './../../../services/model';
@@ -15,12 +15,16 @@ export class AuctionsComponent implements OnInit{
     notFound:boolean = false;
 
     constructor(
+        public route:ActivatedRoute,
         private router: Router,
         private auctionService: AuctionService
     ) { }
 
     ngOnInit(){
-        if(this.route.snapshot.url[1] && this.route.snapshot.url[1].path === 'auctions-not-found') this.notFound = true;
+        if(this.route.snapshot.url[1] && this.route.snapshot.url[1].path === 'auctions-not-found') {
+            this.notFound = true;
+        }
+        console.log(this.route.snapshot.url);
         this.auctions = this.auctionService.getAuctions();
     }
 
