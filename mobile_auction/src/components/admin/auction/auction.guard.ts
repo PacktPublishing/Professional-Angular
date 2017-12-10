@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { Observable } from "rxjs/Rx";
 
 import { Auction } from "../../../services/model";
 import { AuctionService } from './../../../services/auction.service';
@@ -9,17 +10,29 @@ export class AuctionGuard implements CanActivate {
     auction: Auction;
 
     constructor(
-        public AuctionService: AuctionService,
+        public auctionService: AuctionService,
         public router: Router
     ) {}
 
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
-    ) {
-        this.auction = this.AuctionService.getAuction(route.params['id']);
-        if(this.auction){ return true; }
-        this.router.navigate(['/admin/auctions']);
-        return false;
+    ):Observable<boolean>  {
+        let auctionName = route.params['id'];
+        return this.auctionService.getAuction(auctionName)
+            .take(1)
+            .map(auction => !!auction)
+            .do(auctionExists => {
+                if (!auctionExists)  this.router.navigate(['/admin/auctions']);
+            })
+            .catch(error => {
+                    if (error.status === 404) {
+                        this.router.navigate(['/admin/auctions']);
+                        return Observable.of(false)
+                    } else {
+                        return Observable.throw(error);
+                    }
+                }
+            )
     }
 }
