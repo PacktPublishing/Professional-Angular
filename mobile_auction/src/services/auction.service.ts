@@ -120,6 +120,6 @@ export class AuctionService {
 
     static handleError (error: Response) {
       console.error(error);
-      return Observable.throw(error.json() || 'Server error');
+      return Observable.throw(error || 'Server error');
   }
 }
