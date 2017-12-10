@@ -15,6 +15,7 @@ export const adminRoutes: Routes = [
         component: AdminComponent,
         children: [
              {path:'', pathMatch: 'full', redirectTo: 'auctions'},
+             {path:'auctions/auctions-not-found', component: AuctionsComponent },
              {path:'auctions', component: AuctionsComponent },
              {path:'auction/new',  component: AuctionComponent },
              {path:'auction/:id', component: AuctionComponent, canActivate: [AuctionGuard] },

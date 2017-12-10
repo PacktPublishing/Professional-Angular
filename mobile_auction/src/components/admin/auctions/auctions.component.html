@@ -1,13 +1,18 @@
 <h3>Auctions</h3>
 <div class="row">
-    <div class="col-sm-4" *ngFor="let auction of auctions|async">
-        <div class="auction-tile">
-            <div (click)="onSelect(auction)">
-                <h4 class="text-center">{{auction.title}}</h4>
-                <hr>
-                <div>
-                    <p>Duration - {{ auction.totalAuctionDuration() | secondsToTime }}</p>
-                    <p>Number of product auctions - {{ auction.productAuctions.length }}</p>
+    <div *ngIf="notFound" class="alert alert-danger">
+        <p>Could not load that specific auction!</p>
+    </div>
+    <div *ngIf="!notFound">
+        <div class="col-sm-4" *ngFor="let auction of auctions|async">
+            <div class="auction-tile">
+                <div (click)="onSelect(auction)">
+                    <h4 class="text-center">{{auction.title}}</h4>
+                    <hr>
+                    <div>
+                        <p>Duration - {{ auction.totalAuctionDuration() | secondsToTime }}</p>
+                        <p>Number of product auctions - {{ auction.productAuctions.length }}</p>
+                    </div>
                 </div>
             </div>
         </div>
