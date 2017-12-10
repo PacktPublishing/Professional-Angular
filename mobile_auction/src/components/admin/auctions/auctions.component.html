@@ -1,5 +1,6 @@
 <h3>Auctions</h3>
 <div class="row">
+    <div *ngIf="notFound" class="danger">Could not load the specific auction!</div>
     <div class="col-sm-4" *ngFor="let auction of auctions|async">
         <div class="auction-tile">
             <div (click)="onSelect(auction)">

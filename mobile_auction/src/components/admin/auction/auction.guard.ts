@@ -23,7 +23,7 @@ export class AuctionGuard implements CanActivate {
             .take(1)
             .map(auction => !!auction)
             .do(auctionExists => {
-                if (!auctionExists)  this.router.navigate(['/admin/auctions']);
+                if (!auctionExists)  this.router.navigate(['/admin/auctions/auctions-not-found']);
             })
             .catch(error => {
                     if (error.status === 404) {

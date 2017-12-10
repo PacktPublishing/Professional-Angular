@@ -12,6 +12,7 @@ import { AuctionService } from './../../../services/auction.service';
 export class AuctionsComponent implements OnInit{ 
     auctions: Observable<Auction[]>;
     subscription: any;
+    notFound:boolean = false;
 
     constructor(
         private router: Router,
@@ -19,6 +20,7 @@ export class AuctionsComponent implements OnInit{
     ) { }
 
     ngOnInit(){
+        if(this.route.snapshot.url[1] && this.route.snapshot.url[1].path === 'auctions-not-found') this.notFound = true;
         this.auctions = this.auctionService.getAuctions();
     }
 
