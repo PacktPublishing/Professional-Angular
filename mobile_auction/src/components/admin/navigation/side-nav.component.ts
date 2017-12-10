@@ -18,12 +18,12 @@ export class SideNavComponent implements OnInit, OnDestroy {
     };
     showNav: boolean = true;
     productAuctions: Observable<ProductAuction[]>;
+    subscription: Subscription;
 
     constructor(
         private router: Router,
         private auctionService: AuctionService,
-        private auctionBuilderService: AuctionBuilderService,
-        private subscription: Subscription
+        private auctionBuilderService: AuctionBuilderService
     ) { }
 
     ngOnInit(){
