@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Observable } from 'rxjs/Rx';
+import { Observable, Subscription } from 'rxjs/Rx';
 
 import { ProductAuction, Product } from './../../../services/model';
 import { AuctionService } from './../../../services/auction.service';
@@ -22,7 +22,8 @@ export class SideNavComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private auctionService: AuctionService,
-        private auctionBuilderService: AuctionBuilderService
+        private auctionBuilderService: AuctionBuilderService,
+        private subscription: Subscription
     ) { }
 
     ngOnInit(){
