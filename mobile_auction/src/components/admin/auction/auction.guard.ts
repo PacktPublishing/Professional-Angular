@@ -9,7 +9,7 @@ export class AuctionGuard implements CanActivate {
     auction: Auction;
 
     constructor(
-        public AuctionService: AuctionService,
+        public auctionService: AuctionService,
         public router: Router
     ) {}
 
@@ -17,7 +17,7 @@ export class AuctionGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ) {
-        this.auction = this.AuctionService.getAuction(decodeURI(route.params['id']));
+        this.auction = this.auctionService.getAuction(decodeURI(route.params['id']));
         if(this.auction){ return true; }
         this.router.navigate(['/admin/auctions']);
         return false;
