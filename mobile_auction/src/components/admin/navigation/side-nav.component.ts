@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
+import { Observable, Subscription } from 'rxjs/Rx';
 
 import { ProductAuction, Product } from './../../../services/model';
 import { AuctionService } from './../../../services/auction.service';
@@ -17,13 +17,13 @@ export class SideNavComponent implements OnInit, OnDestroy {
         newButton: 'New Auction'
     };
     showNav: boolean = true;
-    productAuctions: ProductAuction[];
-    private subscription: Subscription;
+    productAuctions: Observable<ProductAuction[]>;
 
     constructor(
         private router: Router,
         private auctionService: AuctionService,
-        private auctionBuilderService: AuctionBuilderService
+        private auctionBuilderService: AuctionBuilderService,
+        private subscription: Subscription
     ) { }
 
     ngOnInit(){
@@ -32,7 +32,6 @@ export class SideNavComponent implements OnInit, OnDestroy {
         this.subscription = this.router.events.subscribe(
             (navigationEnd: NavigationEnd) => {
                 let route = navigationEnd.url;
-                this.productAuctions = [];
 
                 if (route.includes('product-auction')) {
                     this.preset = {
@@ -61,13 +60,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
 
     generateLinks(route: string) {
         if (route.includes('auction/')){
-            this.auctionService.getProductAuctions()
-            .subscribe(
-                (productAuctions: ProductAuction[]) => {
-                    this.productAuctions = productAuctions;
-                },
-                (err: any) => console.error(err)
-            );
+            this.productAuctions = this.auctionService.getProductAuctions();
         }
     }
     hideNav(route: string){

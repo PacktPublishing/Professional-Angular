@@ -1,6 +1,6 @@
 <h3>Product Auctions</h3>
 <div class="row">
-    <div class="col-sm-4" *ngFor="let product of productAuctions">
+    <div class="col-sm-4" *ngFor="let product of productAuctions|async">
         <div class="auction-tile">
             <div (click)="onSelect(product)">
                 <h4 class="text-center">{{product.title}}</h4>
