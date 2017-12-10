@@ -4,7 +4,7 @@
         <a [routerLink]="[preset.route]" class="btn btn-success">{{preset.newButton}}</a>
     </div>
     <div class="side-nav">
-        <div class="well text-center clickable" *ngFor="let product of productAuctions" (click)="addProduct(product)">
+        <div class="well text-center clickable" *ngFor="let product of productAuctions|async" (click)="addProduct(product)">
                 {{ product?.title }}
         </div>
     </div>

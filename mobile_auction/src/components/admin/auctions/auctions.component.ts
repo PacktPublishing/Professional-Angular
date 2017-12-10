@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
 
 import { Auction } from './../../../services/model';
 import { AuctionService } from './../../../services/auction.service';
@@ -9,7 +10,7 @@ import { AuctionService } from './../../../services/auction.service';
     templateUrl: '/src/components/admin/auctions/auctions.component.html'
 })
 export class AuctionsComponent implements OnInit{ 
-    auctions: Auction[] = [];
+    auctions: Observable<Auction[]>;
     subscription: any;
 
     constructor(
@@ -18,11 +19,7 @@ export class AuctionsComponent implements OnInit{
     ) { }
 
     ngOnInit(){
-        this.subscription = this.auctionService.getAuctions()
-        .subscribe(
-            (auctions: Auction[]) => this.auctions = auctions,
-            (err: any) => console.error(err)
-        );
+        this.auctions = this.auctionService.getAuctions();
     }
 
     onSelect(auction: Auction) {
