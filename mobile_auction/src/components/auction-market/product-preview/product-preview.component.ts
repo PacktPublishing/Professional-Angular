@@ -23,9 +23,11 @@ export class ProductPreviewComponent implements OnChanges {
   ) {}
 
   ngOnChanges() {
-    this.auctionPreview = this.auction.productAuctions.slice(this.currentProductAuction + 1, this.currentProductAuction + 4);
-    if (this.auctionPreview.length < 3){
-      this.auctionEnding.emit(true);
+    if (this.auction){
+      this.auctionPreview = this.auction.productAuctions.slice(this.currentProductAuction + 1, this.currentProductAuction + 4);
+      if (this.auctionPreview.length < 3){
+        this.auctionEnding.emit(true);
+      }
     }
   }
 

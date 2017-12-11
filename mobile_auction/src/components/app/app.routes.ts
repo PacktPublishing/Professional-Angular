@@ -13,7 +13,7 @@ const adminRoutes: Routes = [
 
 export const routes: Routes = [
   { path: 'start', component: StartComponent },
-  { path: 'auction-market', component: AuctionMarketComponent },
+  { path: 'auction-market/:id', component: AuctionMarketComponent },
   { path: 'finish', component: FinishComponent },
   ...adminRoutes,
   { path: '**', redirectTo: '/start' }

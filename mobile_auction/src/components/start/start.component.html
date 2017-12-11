@@ -1,5 +1,20 @@
 <div class="text-center m-t-lg">
   <h2>Welcome to the Mobile Auction App</h2>
   <p>Please enter a username above before proceeding</p>
-  <a class="btn btn-success" [routerLink]="['/auction-market']">Enter Auction</a>
+  <p>Please select an auction below to begin</p>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-4" *ngFor="let auction of auctionList">
+        <div class="auction-tile">
+            <div (click)="onSelect(auction)">
+                <h4 class="text-center">{{auction.title}}</h4>
+                <hr>
+                <div>
+                    <p>Duration - {{ auction.totalAuctionDuration() | secondsToTime }}</p>
+                    <p>Number of product auctions - {{ auction.productAuctions.length }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
