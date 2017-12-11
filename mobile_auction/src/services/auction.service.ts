@@ -94,6 +94,7 @@ export class AuctionService {
                                     return x.name === productAuction.name
                                 }
                             )
+                            productAuction.product.sellingPrice = 0;
                         }
                     )
                     return auction;

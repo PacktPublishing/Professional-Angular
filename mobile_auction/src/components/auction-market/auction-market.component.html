@@ -8,21 +8,21 @@
       <h3>Auction</h3>
       <div class="row m-t-md">
         <div class="col-sm-7">
-          <img class="img-responsive" [src]="'/static/images/' + currentProductAuction.product.image" >
+          <img class="img-responsive" [src]="'/static/images/' + currentProductAuction?.product.image" >
         </div>
         <div class="col-sm-5">
           <div class="well">
-            <h4>{{currentProductAuction.product.title}}</h4>
+            <h4>{{currentProductAuction?.product.title}}</h4>
             <p>
               Price:
-              <span class="text-medium">$ {{currentProductAuction.product.sellingPrice}} </span>
+              <span class="text-medium">$ {{currentProductAuction?.product.sellingPrice}} </span>
             </p>
             <p class="text-medium">
-              {{currentProductAuction.product.description}}
+              {{currentProductAuction?.product.description}}
             </p>
             <p>
               Time Left:
-              <span class="text-medium">{{currentProductAuction.duration - productAuctionRunningDuration | secondsToTime}}</span>
+              <span class="text-medium">{{currentProductAuction?.duration - productAuctionRunningDuration | secondsToTime}}</span>
             </p>
           </div>
         </div>
