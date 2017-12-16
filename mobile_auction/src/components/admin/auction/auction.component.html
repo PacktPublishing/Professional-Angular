@@ -7,7 +7,7 @@
                 <div id="auction-data" class="col-sm-6 ">
                     <div class="form-group row">
                         <label for="auction-title">Name:</label>
-                        <input type="text" name="name" class="form-control" id="auction-title" placeholder="What would be the name of this auction (no space)?" [(ngModel)]="auction.name" #name="ngModel" required maa-RemoteValidator>
+                        <input type="text" name="name" class="form-control" id="auction-title" placeholder="What would be the name of this auction (no space)?" [(ngModel)]="auction.name" [disabled]="isExistingAuction" #name="ngModel" required maa-RemoteValidator maa-busyIndicator>
                         <div *ngIf="name.touched || submitted">
                             <label *ngIf="name.control.hasError('required')" class="alert alert-danger validation-message">Name is required</label>
                             <label *ngIf="name.control.hasError('auctionName')" class="alert alert-danger validation-message">An auction with this name already exists.</label>

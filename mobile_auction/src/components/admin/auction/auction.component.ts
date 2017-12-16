@@ -14,6 +14,7 @@ export class AuctionComponent implements OnInit, OnDestroy {
     subscription: Subscription;
     submitted: boolean = false;
     removeTouched: boolean = false;
+    isExistingAuction: boolean = false;
 
     constructor(
         public route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class AuctionComponent implements OnInit, OnDestroy {
                 this.auction = this.auctionBuilderService.startBuildingNew();
             } else {
                 let auctionName = params['id'];
+                this.isExistingAuction = true;
                 this.auctionBuilderService.startBuildingExisting(auctionName)
                     .subscribe(
                         (data:Auction) => {
