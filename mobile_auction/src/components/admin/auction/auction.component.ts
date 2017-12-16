@@ -60,10 +60,8 @@ export class AuctionComponent implements OnInit, OnDestroy {
     save(formAuction:any){
         this.submitted = true;
         if (!formAuction.valid) return;
-        this.auctionBuilderService.save().subscribe(
-            success => this.router.navigate(['/admin/auctions']),
-            err => console.error(err)
-        );
+        this.auctionBuilderService.save();
+        this.router.navigate(['/admin/auctions']);
     }
 
     removeProductAuction(productAuction: ProductAuction) {
