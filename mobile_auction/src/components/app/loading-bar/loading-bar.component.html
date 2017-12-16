@@ -1,0 +1,19 @@
+<div [hidden]="!show">
+    <div class="loader-overlay">
+        <svg width="500" height="2">
+            <rect id="blue-rectangle" width="500" height="2" x="0" y="0" fill="#0099cc"></rect>
+            <animate 
+                xlink:href="#blue-rectangle"
+                attributeName="x" 
+                from="0"
+                to="60%" 
+                dur="2s"
+                begin="0s"
+                values="00; 60%; 00"
+                keyTimes="0; 0.5; 1"
+                repeatCount="indefinite"
+                fill="freeze" 
+                id="rect-anim"/>
+        </svg>
+    </div>
+</div>
