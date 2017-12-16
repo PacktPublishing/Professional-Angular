@@ -7,11 +7,11 @@
                 <div id="auction-data" class="col-sm-6 ">
                     <div class="form-group row">
                         <label for="auction-title">Title:</label>
-                        <input type="text" name="title" class="form-control" id="auction-title" placeholder="What would be the auction title?" [(ngModel)]="auction.title" maa-RemoteValidator>
-                        <!-- <div *ngIf="name.touched || submitted">
-                            <label *ngIf="name.control.hasError('required')" class="alert alert-danger validation-message">Title is required</label>
-                            <label *ngIf="name.control.hasError('workoutname')" class="alert alert-danger validation-message">An auction with this title already exists.</label>
-                        </div> -->
+                        <input type="text" name="title" #title="ngModel" class="form-control" id="auction-title" placeholder="What would be the auction title?" [(ngModel)]="auction.title" maa-RemoteValidator>
+                        <div *ngIf="title.touched || submitted">
+                            <label *ngIf="title.control.hasError('required')" class="alert alert-danger validation-message">Title is required</label>
+                            <label *ngIf="title.control.hasError('workoutname')" class="alert alert-danger validation-message">An auction with this title already exists.</label>
+                        </div>
                     </div>
                     <div class="form-group row">
                         <label>Total Product Auctions:</label>

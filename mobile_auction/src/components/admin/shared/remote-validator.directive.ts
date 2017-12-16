@@ -1,5 +1,8 @@
-import { Directive, Input} from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { NG_ASYNC_VALIDATORS, Validators, Validator, FormControl } from '@angular/forms';
+
+import { Auction } from './../../../services/model';
+import { AuctionService } from './../../../services/auction.service';
 
 @Directive({
   selector: `[maa-RemoteValidator][ngModel]`,
@@ -7,21 +10,23 @@ import { NG_ASYNC_VALIDATORS, Validators, Validator, FormControl } from '@angula
 })
 
 export class RemoteValidatorDirective implements Validator {
-//   @Input("maa-RemoteValidator") validationKey: string;
-//   @Input("validateFunction") execute: (value: string) => Promise<boolean>;
+  
+  constructor(
+    private auctionService: AuctionService
+  ) { }
 
   validate(control: FormControl): { [key: string]: any } {
-    console.log('validator autorun')
     let value: string = control.value;
-    return this.execute(value).then((result: boolean) => {
-      if (result) {
-        return null;
-      }
-      else {
+    
+    return this.auctionService.getAuction(value)
+      .toPromise()
+      .then((auction: Auction) => {
         let error: any = {};
-        error[this.validationKey] = true;
+        error[value] = true;
         return error;
-      }
-    });
+      }, error => {
+        return null;
+      })
   }
+
 }
