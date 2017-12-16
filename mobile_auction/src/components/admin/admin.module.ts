@@ -19,6 +19,7 @@ import { SharedModule } from './../shared/shared.module';
 
 
 import { RemoteValidatorDirective } from "./shared/remote-validator.directive";
+import { BusyIndicatorDirective } from "./shared/busy-indicator.directive";
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import { RemoteValidatorDirective } from "./shared/remote-validator.directive";
         ProductAuctionComponent,
         SubNavComponent,
         SideNavComponent,
-        RemoteValidatorDirective
+        RemoteValidatorDirective,
+        BusyIndicatorDirective
     ],
     providers: [
         AuctionBuilderService,
