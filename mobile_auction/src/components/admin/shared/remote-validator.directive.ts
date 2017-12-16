@@ -15,18 +15,21 @@ export class RemoteValidatorDirective implements Validator {
     private auctionService: AuctionService
   ) { }
 
-  validate(control: FormControl): { [key: string]: any } {
-    let value: string = control.value;
-    
-    return this.auctionService.getAuction(value)
-      .toPromise()
-      .then((auction: Auction) => {
-        let error: any = {};
-        error[value] = true;
-        return error;
-      }, error => {
-        return null;
-      })
+  promiseHandler(promise: any): Promise<boolean>{
+    return promise.then((auction: Auction) => {
+      let error: any = {};
+      error['auctionName'] = true;
+      return error;
+    }, error => {
+      return null;
+    })
   }
 
+  validate(control: FormControl): { [key: string]: any } {
+    let value: string = control.value;
+    if (value){
+      return this.promiseHandler(this.auctionService.getAuction(value).toPromise())
+    }
+    else return this.promiseHandler(Promise.resolve(false));
+  }
 }
