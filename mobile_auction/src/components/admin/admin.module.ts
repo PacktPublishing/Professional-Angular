@@ -17,6 +17,9 @@ import { SubNavComponent } from './navigation/sub-nav.component';
 import { SideNavComponent } from './navigation/side-nav.component';
 import { SharedModule } from './../shared/shared.module';
 
+
+import { RemoteValidatorDirective } from "./shared/remote-validator.directive";
+
 @NgModule({
     imports: [
         CommonModule,
@@ -32,7 +35,8 @@ import { SharedModule } from './../shared/shared.module';
         ProductAuctionsComponent,
         ProductAuctionComponent,
         SubNavComponent,
-        SideNavComponent
+        SideNavComponent,
+        RemoteValidatorDirective
     ],
     providers: [
         AuctionBuilderService,
