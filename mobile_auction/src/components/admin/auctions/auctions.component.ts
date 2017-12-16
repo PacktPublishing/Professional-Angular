@@ -24,7 +24,6 @@ export class AuctionsComponent implements OnInit{
         if(this.route.snapshot.url[1] && this.route.snapshot.url[1].path === 'auctions-not-found') {
             this.notFound = true;
         }
-        console.log(this.route.snapshot.url);
         this.auctions = this.auctionService.getAuctions();
     }
 
