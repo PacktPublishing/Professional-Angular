@@ -25,7 +25,7 @@ export class AuctionService {
                 .catch(AuctionService.handleError);
     }
 
-    getProduct(productName: string){
+    getProductAuction(productName: string){
         return this.http.get(this.collectionsUrl + '/product-auctions/'+ productName  + this.params)
                 .catch(AuctionService.handleError);
     }
@@ -102,20 +102,47 @@ export class AuctionService {
         .catch(AuctionService.handleError);
     }
 
-    addAuction(auction: Auction){
-        if (auction.title) {
-            this.auctions.push(auction);
-            return auction;
-        }
+    addAuction(auction: any){
+        let auctionProductAuctions:any = [];
+        auction.productAuctions.forEach(
+            (productAuction:any) => {
+                auctionProductAuctions.push({name: productAuction.product.name, duration: productAuction.duration})
+            }
+        );
+
+        let body = {
+            "_id": auction.name.replace(/\s/g,''),
+            "productAuctions": auctionProductAuctions,
+            "name": auction.name,
+            "title": auction.title
+        };
+
+        return this.http.post(this.collectionsUrl + '/auctions' + this.params, body)
+            .catch(AuctionService.handleError)
     }
 
     updateAuction(auction: Auction){
-        for (var i = 0; i < this.auctions.length; i++) {
-            if (this.auctions[i].title === auction.title) {
-                this.auctions[i] = auction;
-                break;
+        let auctionproductAuctions:any = [];
+        auction.productAuctions.forEach(
+            (productAuction:any) => {
+                auctionproductAuctions.push({name: productAuction.product.name, duration: productAuction.duration})
             }
-        }
+        );
+
+        let body = {
+            "_id": auction.name.replace(/\s/g,''),
+            "productAuctions": auctionproductAuctions,
+            "name": auction.name,
+            "title": auction.title
+        };
+
+        return this.http.put(this.collectionsUrl + '/auctions/' + auction.name + this.params, body)
+            .catch(AuctionService.handleError);
+    }
+
+    deleteAuction(auctionName:string) {
+        return this.http.delete(this.collectionsUrl + '/auctions/' + auctionName + this.params)
+            .catch(AuctionService.handleError)
     }
 
     static handleError (error: Response) {
