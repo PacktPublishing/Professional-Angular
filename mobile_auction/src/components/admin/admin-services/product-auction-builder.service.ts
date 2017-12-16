@@ -20,7 +20,7 @@ export class ProductAuctionBuilderService {
 
     startBuildingExisting(name: string){
             this.newProduct = false;
-            return this.auctionService.getProductAuction(name)
+            return this.auctionService.getProduct(name)
     }
 
     save(){
