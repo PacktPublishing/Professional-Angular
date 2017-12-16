@@ -19,7 +19,7 @@ export class ProductAuctionGuard implements CanActivate {
         state: RouterStateSnapshot
     ) {
         let productName = route.params['id'];
-        return this.auctionService.getProductAuction(productName)
+        return this.auctionService.getProduct(productName)
             .take(1)
             .map(product => !!product)
             .do(productExists => {
