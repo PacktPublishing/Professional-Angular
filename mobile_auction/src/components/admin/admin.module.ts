@@ -20,6 +20,7 @@ import { SharedModule } from './../shared/shared.module';
 
 import { RemoteValidatorDirective } from "./shared/remote-validator.directive";
 import { BusyIndicatorDirective } from "./shared/busy-indicator.directive";
+import { AjaxButtonComponent } from './shared/ajax-button.component';
 
 @NgModule({
     imports: [
@@ -38,7 +39,8 @@ import { BusyIndicatorDirective } from "./shared/busy-indicator.directive";
         SubNavComponent,
         SideNavComponent,
         RemoteValidatorDirective,
-        BusyIndicatorDirective
+        BusyIndicatorDirective,
+        AjaxButtonComponent
     ],
     providers: [
         AuctionBuilderService,
