@@ -9,7 +9,6 @@ import { AuctionMarketModule } from './../auction-market/auction-market.module';
 import { StartModule } from './../start/start.module';
 import { FinishModule } from './../finish/finish.module';
 
-
 import { Routing } from './app.routes';
 import { AuctionResultService } from '../../services/auction-result.service';
 import { AuctionService } from './../../services/auction.service';
