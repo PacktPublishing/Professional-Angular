@@ -3,7 +3,7 @@
     <div *ngIf="notFound" class="alert alert-danger">
         <p>Could not load that specific auction!</p>
     </div>
-    <div *ngIf="!notFound">
+    <div *ifNot="notFound">
         <div class="col-sm-4" *ngFor="let auction of auctions|async">
             <div class="auction-tile">
                 <div (click)="onSelect(auction)">
