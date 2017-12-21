@@ -1,15 +1,15 @@
 {
-  "name": "trainer",
+  "name": "Professional-Angular",
   "version": "1.0.0",
-  "description": "Angular 2 implementation of Personal Trainer in TypeScript",
+  "description": "Mobile Auction App for the Professional Angular courseware and built with Angular version 4 and TypeScript",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chandermani/angular2byexample.git"
+    "url": "git+https://github.com/ekpo-d/Professional-Angular.git"
   },
   "bugs": {
-    "url": "https://github.com/chandermani/angular2byexample/issues"
+    "url": "https://github.com/ekpo-d/Professional-Angular/issues"
   },
-  "homepage": "https://github.com/chandermani/angular2byexample.git#readme",
+  "homepage": "https://github.com/ekpo-d/Professional-Angular.git#readme",
   "devDependencies": {
     "@types/core-js": "0.9.36",
     "del": "^1.2.0",
@@ -19,6 +19,10 @@
     "gulp-typescript": "^3.1.5",
     "gulp-watch": "^4.3.5",
     "gulp-webserver": "^0.9.1",
+    "jasmine-core": "2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
     "open": "0.0.5",
     "typescript": "^2.3.4"
   },

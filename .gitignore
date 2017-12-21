@@ -22,6 +22,9 @@ dist/
 
 # Transpiled files
 **/*.js
+
+#Files to commit
+!mobile_auction/tests/**/*.js
 !mobile_auction/systemjs.config.js
 !mobile_auction/gulpfile.js
 !mobile_auction/db/seed.js
