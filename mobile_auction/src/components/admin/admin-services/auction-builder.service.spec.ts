@@ -148,7 +148,7 @@ describe('Auction Builder Service', () => {
         }
     )))
 
-    it('should add a productAuction to an exiting auction object', inject(
+    it('should add a productAuction to a new auction object', inject(
         [AuctionService],
         <any>fakeAsync((
             auctionService: AuctionService,
