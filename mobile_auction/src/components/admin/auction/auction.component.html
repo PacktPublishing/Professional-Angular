@@ -6,8 +6,8 @@
             <form #f="ngForm" name="formAuction" (ngSubmit)="save(f.form)" class="row m-b-lg" novalidate>
                 <div id="auction-data" class="col-sm-6 ">
                     <div class="form-group row">
-                        <label for="auction-title">Name:</label>
-                        <input type="text" name="name" class="form-control" id="auction-title" placeholder="What would be the name of this auction (no space)?" [(ngModel)]="auction.name" [disabled]="isExistingAuction" #name="ngModel" required maa-RemoteValidator maa-busyIndicator>
+                        <label for="auction-name">Name:</label>
+                        <input type="text" name="name" class="form-control" id="auction-name" placeholder="What would be the name of this auction (no space)?" [(ngModel)]="auction.name" [disabled]="isExistingAuction" #name="ngModel" required maa-RemoteValidator maa-busyIndicator>
                         <div *ngIf="name.touched || submitted">
                             <label *ngIf="name.control.hasError('required')" class="alert alert-danger validation-message">Name is required</label>
                             <label *ngIf="name.control.hasError('auctionName')" class="alert alert-danger validation-message">An auction with this name already exists.</label>
@@ -37,7 +37,7 @@
                     <div class="row">
                         <ajax-button [execute]="save" [parameter]="f">
                             <span class="glyphicon glyphicon-refresh spin" data-animator></span>
-                            <span data-content>Save</span>
+                            <span data-content id="saveButton">Save</span>
                         </ajax-button>
                     </div>
                 </div>
