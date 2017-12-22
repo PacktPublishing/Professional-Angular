@@ -97,16 +97,16 @@ describe('Auction Builder Service', () => {
 
     it('should return an exisiting auction object', inject(
         [AuctionService],
-        <any>fakeAsync((
+        (
             auctionService: AuctionService,
         ) => {
             expect(service.startBuildingExisting('testauction2')).toEqual(auctionService.getAuction('testauction2'))
         }
-    )))
+    ))
 
     it('should remove a productAuction from an auction object', inject(
         [AuctionService],
-        <any>fakeAsync((
+        (
             auctionService: AuctionService,
         ) => {
             auctionService.getAuctions()
@@ -119,11 +119,11 @@ describe('Auction Builder Service', () => {
                     expect(service.auction.productAuctions.length).toEqual(1);
                 })
         }
-    )))
+    ))
 
     it('should add a productAuction to an exiting auction object', inject(
         [AuctionService],
-        <any>fakeAsync((
+        (
             auctionService: AuctionService,
         ) => {
             auctionService.getAuctions()
@@ -146,11 +146,11 @@ describe('Auction Builder Service', () => {
                     expect(service.auction.productAuctions.length).toEqual(3);
                 })
         }
-    )))
+    ))
 
     it('should add a productAuction to a new auction object', inject(
         [AuctionService],
-        <any>fakeAsync((
+        (
             auctionService: AuctionService,
         ) => {
             auctionService.getAuctions()
@@ -174,5 +174,5 @@ describe('Auction Builder Service', () => {
                     expect(service.auction.productAuctions.length).toEqual(1);
                 })
         }
-    )))
+    ))
 })

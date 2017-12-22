@@ -89,7 +89,7 @@ describe('Auctions component', () => {
 
     it('should set the notFound property to true', inject(
         [ActivatedRoute, Router],
-        <any>fakeAsync((
+        (
             route: ActivatedRoute,
             router: Router 
         ) => {
@@ -99,11 +99,11 @@ describe('Auctions component', () => {
             comp.ngOnInit()
             expect(comp.notFound).toEqual(true);
         }
-    )))
+    ))
 
     it('should navigate to the selected auction', inject(
         [Router, AuctionService],
-        <any>fakeAsync((
+        (
             router: Router 
             auctionService: AuctionService
         ) => {
@@ -114,5 +114,5 @@ describe('Auctions component', () => {
                     expect(router.navigate).toHaveBeenCalledWith(['./admin/auction', data[0].name]);
                 });
         }
-    )))
+    ))
 })
