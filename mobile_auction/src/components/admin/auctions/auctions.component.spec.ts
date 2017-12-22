@@ -1,4 +1,4 @@
-import { inject, fakeAsync, async, TestBed } from '@angular/core/testing';
+import { inject, async, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import { Observable } from "rxjs/Rx";
