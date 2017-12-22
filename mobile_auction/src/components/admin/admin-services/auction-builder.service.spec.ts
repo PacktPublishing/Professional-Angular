@@ -1,4 +1,4 @@
-import { inject, fakeAsync, async, TestBed } from '@angular/core/testing';
+import { inject, async, TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 
 import { AuctionBuilderService } from './auction-builder.service';
@@ -85,7 +85,7 @@ describe('Auction Builder Service', () => {
             .configureTestingModule({
                 providers: [
                     {provide: AuctionService, useClass: MockAuctionService},
-                    {provide: AuctionBuilderService, useClass: AuctionBuilderService},
+                    AuctionBuilderService,
                 ]
             });
         service = TestBed.get(AuctionBuilderService);
