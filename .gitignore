@@ -23,7 +23,12 @@ dist/
 # Transpiled files
 **/*.js
 
+# Evironment variables configuration
+env/.env
+.env
+
 #Files to commit
+!server/**/*
 !mobile_auction/tests/**/*.js
 !mobile_auction/systemjs.config.js
 !mobile_auction/gulpfile.js
