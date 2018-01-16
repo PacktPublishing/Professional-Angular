@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminRouting } from './admin.routes';
 import { AuctionBuilderService } from './admin-services/auction-builder.service';
 import { AuctionGuard } from './auction/auction.guard';
+import { AuthGuard } from '../../services/auth.guard';
 import { ProductAuctionBuilderService } from './admin-services/product-auction-builder.service';
 import { ProductAuctionGuard } from './product-auction/product-auction.guard';
 
@@ -24,7 +25,7 @@ import { AjaxButtonComponent } from './shared/ajax-button.component';
 
 @NgModule({
     imports: [
-        CommonModule,
+    CommonModule,
         AdminRouting,
         FormsModule,
         ReactiveFormsModule,
@@ -46,6 +47,7 @@ import { AjaxButtonComponent } from './shared/ajax-button.component';
     providers: [
         AuctionBuilderService,
         AuctionGuard,
+        AuthGuard,
         ProductAuctionBuilderService,
         ProductAuctionGuard
     ],
