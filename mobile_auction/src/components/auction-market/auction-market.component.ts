@@ -77,7 +77,7 @@ export class AuctionMarketComponent implements OnInit {
           830,
           0
         ),
-        20
+        30
       ),
       new ProductAuction(
         new Product(
