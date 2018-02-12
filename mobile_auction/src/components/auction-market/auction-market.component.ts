@@ -265,6 +265,7 @@ export class AuctionMarketComponent implements OnInit {
     this.user = this.getUser()
     if (this.user && this.productAuctionRunningDuration < this.currentProductAuction.duration) {
       if (this.bidAmount > this.currentProductAuction.product.sellingPrice) {
+        this.errorMessages.bidError = '';
         this.bid = new Bid(+this.bidAmount, this.currentProductAuction.product.title, this.user)
         this.currentProductAuction.product.sellingPrice = this.bid.amount;
         localStorage.setItem('productSellingPrice', this.currentProductAuction.product.sellingPrice.toString())
