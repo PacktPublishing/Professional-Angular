@@ -1,15 +1,15 @@
 {
-  "name": "trainer",
+  "name": "mobile_auction",
   "version": "1.0.0",
-  "description": "Angular 2 implementation of Personal Trainer in TypeScript",
+  "description": "Mobile Auction App for the Professional Angular courseware and built with Angular version 5 and TypeScript",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chandermani/angular2byexample.git"
+    "url": "git+https://github.com/ekpo-d/Professional-Angular.git"
   },
   "bugs": {
-    "url": "https://github.com/chandermani/angular2byexample/issues"
+    "url": "https://github.com/ekpo-d/Professional-Angular/issues"
   },
-  "homepage": "https://github.com/chandermani/angular2byexample.git#readme",
+  "homepage": "https://github.com/ekpo-d/Professional-Angular.git#readme",
   "devDependencies": {
     "@types/core-js": "0.9.36",
     "del": "^1.2.0",
@@ -19,25 +19,32 @@
     "gulp-typescript": "^3.1.5",
     "gulp-watch": "^4.3.5",
     "gulp-webserver": "^0.9.1",
+    "jasmine-core": "2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
     "open": "0.0.5",
-    "typescript": "^2.3.4"
+    "typescript": "2.4.2"
   },
   "dependencies": {
-    "@angular/common": "^4.4.6",
-    "@angular/compiler": "^4.4.6",
-    "@angular/core": "^4.4.6",
-    "@angular/forms": "^4.4.6",
-    "@angular/http": "^4.4.6",
-    "@angular/platform-browser": "^4.4.6",
-    "@angular/platform-browser-dynamic": "^4.4.6",
-    "@angular/router": "^4.4.6",
+    "@angular/animations": "^5.2.4",
+    "@angular/common": "^5.2.4",
+    "@angular/compiler": "^5.2.4",
+    "@angular/compiler-cli": "^5.2.4",
+    "@angular/core": "^5.2.4",
+    "@angular/forms": "^5.2.4",
+    "@angular/http": "^5.2.4",
+    "@angular/platform-browser": "^5.2.4",
+    "@angular/platform-browser-dynamic": "^5.2.4",
+    "@angular/platform-server": "^5.2.4",
+    "@angular/router": "^5.2.4",
     "core-js": "^2.4.1",
     "ngx-modialog": "^3.0.3",
     "reflect-metadata": "0.1.3",
-    "rxjs": "5.0.0-beta.12",
+    "rxjs": "^5.5.6",
     "systemjs": "0.19.27",
     "tslib": "^1.8.1",
-    "zone.js": "^0.6.23"
+    "zone.js": "^0.8.20"
   },
   "scripts": {}
 }
