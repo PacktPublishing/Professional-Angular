@@ -89,17 +89,18 @@ export class AuctionMarketComponent implements OnInit {
   onBid() {
     this.user = this.getUser()
     if (this.user && this.productAuctionRunningDuration < this.currentProductAuction.duration) {
-      if (this.bidAmount > this.currentProductAuction.product.sellingPrice) {
-        this.bid = new Bid(+this.bidAmount, this.currentProductAuction.product.title, this.user)
-        this.currentProductAuction.product.sellingPrice = this.bid.amount;
-        localStorage.setItem('productSellingPrice', this.currentProductAuction.product.sellingPrice.toString())
-      }
-      else{
-        this.errorMessages.bidError = 'Your bid is too low'
-      }
+        if (this.bidAmount > this.currentProductAuction.product.sellingPrice) {
+            this.errorMessages.bidError = '';
+            this.bid = new Bid(+this.bidAmount, this.currentProductAuction.product.title, this.user)
+            this.currentProductAuction.product.sellingPrice = this.bid.amount;
+            localStorage.setItem('productSellingPrice', this.currentProductAuction.product.sellingPrice.toString())
+        }
+        else{
+            this.errorMessages.bidError = 'Your bid is too low';
+        }
     }
     else{
-      this.errorMessages.bidError = 'You cannot place bids at the moment.'
+        this.errorMessages.bidError = 'You cannot place bids at the moment.';
     }
   }
 
