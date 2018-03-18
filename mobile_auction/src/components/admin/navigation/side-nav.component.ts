@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
 
 import { ProductAuction, Product } from './../../../services/model';
 import { AuctionService } from './../../../services/auction.service';
@@ -10,7 +9,7 @@ import { AuctionBuilderService } from './../admin-services/auction-builder.servi
     selector: 'side-nav',
     templateUrl: '/src/components/admin/navigation/side-nav.component.html'
 })
-export class SideNavComponent {
+export class SideNavComponent implements OnInit {
     preset: Object = {
         route: '/admin/auction/new',
         title: 'Auctions',
@@ -18,7 +17,6 @@ export class SideNavComponent {
     };
     showNav: boolean = true;
     productAuctions: ProductAuction[];
-    private subscription: Subscription;
 
     constructor(
         private router: Router,
@@ -26,8 +24,15 @@ export class SideNavComponent {
         private auctionBuilderService: AuctionBuilderService
     ) { }
 
+    ngOnInit(){
+        this.generateLinks(this.router.url);
+        this.hideNav(this.router.url);
+    }
+
     setPreset(preset: any) {
         this.preset = preset;
+        this.generateLinks(preset.route);
+        this.hideNav(preset.route);
     }
 
     generateLinks(route: string) {
@@ -36,11 +41,12 @@ export class SideNavComponent {
         }
     }
     hideNav(route: string){
-        if (route.includes('product-auction/')) {
-            this.showNav = false;
+        console.log(route, route.includes('admin/auction/new'))
+        if (route.includes('admin/auction/new')) {
+            this.showNav = true;
         }
         else{
-            this.showNav = true;
+            this.showNav = false;
         }
     }
     addProduct(product: Product) {
