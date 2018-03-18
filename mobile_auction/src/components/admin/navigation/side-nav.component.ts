@@ -39,11 +39,9 @@ export class SideNavComponent implements OnInit {
 
     generateLinks(route: string) {
         if (route.includes('admin/auction')){
-            console.log('Links received')
             this.auctionService.getProductAuctions()
             .subscribe(
                 (productAuctions: ProductAuction[]) => {
-                    console.log('ProductAuction received')
                     this.productAuctions = productAuctions;
                 },
                 (err: any) => console.error(err)
