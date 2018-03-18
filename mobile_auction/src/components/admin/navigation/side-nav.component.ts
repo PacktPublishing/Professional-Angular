@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-
+import { Router } from '@angular/router';
 import { ProductAuction, Product } from './../../../services/model';
 import { AuctionService } from './../../../services/auction.service';
 import { AuctionBuilderService } from './../admin-services/auction-builder.service';
@@ -36,7 +35,7 @@ export class SideNavComponent implements OnInit {
     }
 
     generateLinks(route: string) {
-        if (route.includes('auction/')){
+        if (route.includes('admin/auction')){
             this.productAuctions = this.auctionService.getProductAuctions();
         }
     }
