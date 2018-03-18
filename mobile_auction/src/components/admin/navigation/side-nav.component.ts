@@ -9,7 +9,7 @@ import { AuctionBuilderService } from './../admin-services/auction-builder.servi
 @Component({
     selector: 'side-nav',
     templateUrl: '/src/components/admin/navigation/side-nav.component.html'
-})ZZ
+})
 export class SideNavComponent implements OnInit {
     preset: Object = {
         route: '/admin/auction/new',
@@ -29,34 +29,12 @@ export class SideNavComponent implements OnInit {
     ngOnInit(){
         this.generateLinks(this.router.url);
         this.hideNav(this.router.url);
-        this.subscription = this.router.events.subscribe(
-            (navigationEnd: NavigationEnd) => {
-                let route = navigationEnd.url;
-                this.productAuctions = [];
-
-                if (route.includes('product-auction')) {
-                    this.preset = {
-                        route: '/admin/product-auction/new',
-                        title: 'Product Auctions',
-                        newButton: 'New Product Auction'
-                    };
-                    this.hideNav(route);
-                }
-                else {
-                    this.preset = {
-                        route: '/admin/auction/new',
-                        title: 'Auctions',
-                        newButton: 'New Auction'
-                    };
-                    this.generateLinks(route);
-                    this.hideNav(route);
-                }
-            }
-        )
     }
 
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
+    setPreset(preset: any) {
+        this.preset = preset;
+        this.generateLinks(preset.route);
+        this.hideNav(preset.route);
     }
 
     generateLinks(route: string) {
@@ -75,7 +53,7 @@ export class SideNavComponent implements OnInit {
             this.showNav = true;
         }
         else{
-            this.showNav = true;
+            this.showNav = false;
         }
     }
     addProduct(product: Product) {

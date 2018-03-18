@@ -1,8 +1,8 @@
 <div>
-    <a [routerLink]="['/admin/auctions']" class="btn btn-primary">
+    <a [routerLink]="['/admin/auctions']" class="btn btn-primary" (click)="changePreset('auctions')">
         Auctions
     </a>
-    <a [routerLink]="['/admin/product-auctions']" class="btn btn-primary">
+    <a [routerLink]="['/admin/product-auctions']" class="btn btn-primary" (click)="changePreset('product-auctions')">
         Product Auctions
     </a>
 </div>

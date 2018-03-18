@@ -1,9 +1,9 @@
-<div *ngIf="showNav">
+<div>
     <h4 class="text-center">{{preset.title}}</h4>
     <div class="btn-wrapper">
         <a [routerLink]="[preset.route]" class="btn btn-success">{{preset.newButton}}</a>
     </div>
-    <div class="side-nav">
+    <div class="side-nav" *ngIf="showNav">
         <div class="well text-center clickable" *ngFor="let product of productAuctions" (click)="addProduct(product)">
                 {{ product?.title }}
         </div>
