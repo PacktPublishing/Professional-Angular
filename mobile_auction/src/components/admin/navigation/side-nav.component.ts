@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
 import { ProductAuction, Product } from './../../../services/model';
@@ -10,7 +10,7 @@ import { AuctionBuilderService } from './../admin-services/auction-builder.servi
     selector: 'side-nav',
     templateUrl: '/src/components/admin/navigation/side-nav.component.html'
 })
-export class SideNavComponent {
+export class SideNavComponent implements OnInit {
     preset: Object = {
         route: '/admin/auction/new',
         title: 'Auctions',
