@@ -13,23 +13,16 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  login(username, password): void {
+  login(username, password) {
     const body = {
       "username": username,
       "password": password
     };
 
-    this.http.post('http://localhost:4000/api/1.0/user/login', body)
-      .subscribe((response: any) => {
-        if (response.status === "success"){
-          localStorage.setItem('token', response.data.token)
-          return true;
-        }
-        else return false
-      })
+    return this.http.post('http://localhost:4000/api/1.0/user/login', body)
   }
 
-  signup(name, username, email, password): void {
+  signup(name, username, email, password) {
     const body = {
       "name": name,
       "username": username,
@@ -37,13 +30,6 @@ export class AuthService {
       "password": password
     };
 
-    this.http.post('http://localhost:4000/api/1.0/user/signup', body)
-      .subscribe((response: any) => {
-        if (response.status === "success"){
-          localStorage.setItem('token', response.data.token)
-          return true;
-        }
-        else return false;
-      })
+    return this.http.post('http://localhost:4000/api/1.0/user/signup', body)
   }
 }

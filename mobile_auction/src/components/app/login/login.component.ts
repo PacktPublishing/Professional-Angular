@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { User } from '../../../services/model';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
@@ -8,19 +7,22 @@ import { AuthService } from '../../../services/auth.service';
     templateUrl: '/src/components/app/login/login.component.html',
 })
 export class LoginComponent {
-    user: User;
     authUser: any;
+    status: string = '';
     
     constructor(public authService: AuthService) {
-        this.user = new User('');
         this.authUser = {username: "", password: ""}
     }
     login(authUser: any){
-        this.createUser(authUser.username);
-        this.authService.login(authUser.username, authUser.password);
-    }
-    createUser(username){
-        sessionStorage.setItem( 'currentUser', username);
-        this.user.name = '';
+        this.authService.login(authUser.username, authUser.password)
+            .subscribe((response: any) => {
+              if (response.status === "success"){
+                console.log('sucess')
+                this.status = "Login successful";
+                localStorage.setItem('token', response.data.token);
+                sessionStorage.setItem( 'currentUser', JSON.stringify({name: response.data.user.username}));
+              }
+              else this.status = "Login unsuccessful";
+            });
     }
 }
