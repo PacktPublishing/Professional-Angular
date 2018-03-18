@@ -18,28 +18,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
         private router: Router
     ) { }
 
-    ngOnInit(){
-        this.subscription = this.router.events.subscribe(
-            (navigationEnd: NavigationEnd) => {
-                let route = navigationEnd.url;
-                if (route.includes('product-auction')) {
-                    this.preset = {
-                        route: '/admin/product-auction/new',
-                        title: 'Product Auctions',
-                        newButton: 'New Product Auction'
-                    };
-                }
-                else {
-                    this.preset = {
-                        route: '/admin/auction/new',
-                        title: 'Auctions',
-                        newButton: 'New Auction'
-                    };
-                }
-            }
-        )
-    }
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
+    setPreset(preset) {
+        this.preset = preset;
     }
 }
