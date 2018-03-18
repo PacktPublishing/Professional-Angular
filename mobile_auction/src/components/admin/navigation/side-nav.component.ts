@@ -35,7 +35,7 @@ export class SideNavComponent implements OnInit {
     }
 
     generateLinks(route: string) {
-        if (route.includes('auction/')){
+        if (route.includes('admin/auction')){
             this.auctionService.getProductAuctions()
             .subscribe(
                 (productAuctions: ProductAuction[]) => {
@@ -46,7 +46,6 @@ export class SideNavComponent implements OnInit {
         }
     }
     hideNav(route: string){
-        console.log(route, route.includes('admin/auction'))
         if (route.includes('admin/auction')) {
             this.showNav = true;
         }
