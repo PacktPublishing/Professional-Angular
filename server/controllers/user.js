@@ -6,11 +6,11 @@ const mongoose = require("mongoose"),
 const User = require("../models/user");
 
 exports.signup = (req, res) => {
-  User.find({ email: req.body.email }, (err, users) => {
+  User.findOne({$or:[{username: req.body.username}, {email: req.body.email}]}, (err, user) => {
     if (err) {
       apiRepsonse.sendError(err, 500, res);
     }
-    if (users && users.length >= 1) {
+    if (user) {
       apiRepsonse.sendError("User exists", 409, res);
     } 
     else {
@@ -27,10 +27,10 @@ exports.signup = (req, res) => {
           });
           user
             .save((result) => {
-              apiRepsonse.sendSuccess("User created", res);
+              return apiRepsonse.sendSuccess("User created", res);
             })
             .catch(err => {
-              apiRepsonse.sendError(err, 500, res);
+              return apiRepsonse.sendError(err, 500, res);
             });
         }
       });
@@ -41,14 +41,14 @@ exports.signup = (req, res) => {
 exports.login = (req, res) => {
   User.findOne({$or:[{username: req.body.username}, {email: req.body.email}]}, (err, user) => {
     if (err) {
-      apiRepsonse.sendError(err, 500, res);
+      return apiRepsonse.sendError(err, 500, res);
     }
     if (!user) {
-      apiRepsonse.sendError("User not found", 404, res);
+      return apiRepsonse.sendError("User not found", 404, res);
     }
     bcrypt.compare(req.body.password, user.password, (err, result) => {
       if (err) {
-        apiRepsonse.sendError("Auth failed", 401, res);
+        return apiRepsonse.sendError("Auth failed", 401, res);
       }
       if (result) {
         const token = jwt.sign(
@@ -66,10 +66,10 @@ exports.login = (req, res) => {
           username: user.username,
           name: user.name
         };
-        apiRepsonse.sendSuccess({user: loggedInUser, token}, res);
+        return apiRepsonse.sendSuccess({user: loggedInUser, token}, res);
       }
       else{
-        apiRepsonse.sendError("Auth failed", 401, res);
+        return apiRepsonse.sendError("Auth failed", 401, res);
       }
     });
   });
@@ -78,8 +78,8 @@ exports.login = (req, res) => {
 exports.delete = (req, res) => {
   User.remove({ _id: req.params.userId }, (err, result) => {
     if (err) {
-      apiRepsonse.sendError(err, 500, res);
+      return apiRepsonse.sendError(err, 500, res);
     }
-    apiRepsonse.sendSuccess("User deleted", res);
+    return apiRepsonse.sendSuccess("User deleted", res);
   });
 };

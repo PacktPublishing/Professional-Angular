@@ -5,7 +5,6 @@ function toLower(v) {
 }
 
 const userSchema = mongoose.Schema({
-  name: {type: String, required: true},
   username: {type: String, required: true, unique: true, set: toLower},
   email: { 
     type: String, 
@@ -15,6 +14,14 @@ const userSchema = mongoose.Schema({
     set: toLower
   },
   password: { type: String, required: true}
+});
+
+userSchema.post('save', function(error, doc, next) {
+  if (error.name === 'MongoError') {
+    next(new Error('A Mongo DB error occured'));
+  } else {
+    next(error);
+  }
 });
 
 module.exports = mongoose.model('User', userSchema);
