@@ -5,9 +5,9 @@ import { Component, Output, EventEmitter } from '@angular/core';
     templateUrl: '/src/components/admin/navigation/sub-nav.component.html'
 })
 export class SubNavComponent{
-  @Output() changeSideNav: EventEmitter = new EventEmitter();
+  @Output() changeSideNav: EventEmitter<any> = new EventEmitter();
 
-  changePreset(presetType){
+  changePreset(presetType: string){
     if (presetType === 'auctions') {
       this.changeSideNav.emit({
         route: '/admin/auction/new',

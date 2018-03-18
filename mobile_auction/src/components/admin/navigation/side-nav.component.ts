@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 
@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Rx';
     selector: 'side-nav',
     templateUrl: '/src/components/admin/navigation/side-nav.component.html'
 })
-export class SideNavComponent implements OnInit, OnDestroy {
+export class SideNavComponent {
     preset: Object = {
         route: '/admin/auction/new',
         title: 'Auctions',
