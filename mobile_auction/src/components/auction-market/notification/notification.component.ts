@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
 export class NotificationComponent {
   showNotification: boolean;
 
-  toggleNotification(condition){
+  toggleNotification(condition: any){
+    console.log(condition)
     if (condition === true){
       this.showNotification = true
     }
