@@ -41,7 +41,6 @@ export class SideNavComponent implements OnInit {
         }
     }
     hideNav(route: string){
-        console.log(route, route.includes('admin/auction/new'))
         if (route.includes('admin/auction/new')) {
             this.showNav = true;
         }
