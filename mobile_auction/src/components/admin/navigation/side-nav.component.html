@@ -1,9 +1,11 @@
-<h4 class="text-center">{{preset.title}}</h4>
-<div class="btn-wrapper">
-    <a [routerLink]="[preset.route]" class="btn btn-success">{{preset.newButton}}</a>
-</div>
-<div class="side-nav">
-    <div class="well text-center clickable" *ngFor="let productAuction of productAuctions" (click)="addProduct(productAuction.product)">
-            {{ productAuction?.product.title }}
+<div>
+    <h4 class="text-center">{{preset.title}}</h4>
+    <div class="btn-wrapper">
+        <a [routerLink]="[preset.route]" class="btn btn-success">{{preset.newButton}}</a>
+    </div>
+    <div class="side-nav" *ngIf="">
+        <div class="well text-center clickable" *ngFor="let productAuction of productAuctions" (click)="addProduct(productAuction.product)">
+                {{ productAuction?.product.title }}
+        </div>
     </div>
 </div>
