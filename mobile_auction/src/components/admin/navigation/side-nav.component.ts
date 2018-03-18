@@ -9,7 +9,7 @@ import { AuctionBuilderService } from './../admin-services/auction-builder.servi
 @Component({
     selector: 'side-nav',
     templateUrl: '/src/components/admin/navigation/side-nav.component.html'
-})
+})ZZ
 export class SideNavComponent implements OnInit {
     preset: Object = {
         route: '/admin/auction/new',
@@ -60,10 +60,12 @@ export class SideNavComponent implements OnInit {
     }
 
     generateLinks(route: string) {
-        if (route.includes('auction/')){
+        if (route.includes('admin/auction')){
+            console.log('Links received')
             this.auctionService.getProductAuctions()
             .subscribe(
                 (productAuctions: ProductAuction[]) => {
+                    console.log('ProductAuction received')
                     this.productAuctions = productAuctions;
                 },
                 (err: any) => console.error(err)
@@ -71,8 +73,8 @@ export class SideNavComponent implements OnInit {
         }
     }
     hideNav(route: string){
-        if (route.includes('product-auction/')) {
-            this.showNav = false;
+        if (route.includes('admin/auction')) {
+            this.showNav = true;
         }
         else{
             this.showNav = true;
