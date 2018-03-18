@@ -9,7 +9,6 @@ export class NotificationComponent {
   showNotification: boolean;
 
   toggleNotification(condition: any){
-    console.log(condition)
     if (condition === true){
       this.showNotification = true
     }
